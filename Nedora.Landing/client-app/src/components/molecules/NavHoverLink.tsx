@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 type NavHoverLinkProps = {
   href: string;
   children: React.ReactNode;
@@ -5,6 +9,8 @@ type NavHoverLinkProps = {
   className?: string;
   onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
 };
+
+type FillState = "idle" | "enter" | "exit";
 
 const variants = {
   nav: "px-3.5 py-1.5 text-sm",
@@ -19,17 +25,34 @@ export function NavHoverLink({
   className = "",
   onClick,
 }: NavHoverLinkProps) {
+  const [fillState, setFillState] = useState<FillState>("idle");
+
   return (
     <a
       href={href}
       onClick={onClick}
+      onMouseEnter={() => setFillState("enter")}
+      onMouseLeave={() => setFillState("exit")}
       className={`group relative inline-flex items-center justify-center overflow-hidden rounded-full font-bold ${variants[variant]} ${className}`}
     >
       <span
-        className="absolute inset-0 origin-bottom scale-y-0 bg-black transition-transform duration-300 ease-out group-hover:scale-y-100"
+        className={`hover-fill-bg absolute inset-0 bg-black ${
+          fillState === "enter"
+            ? "hover-fill-bg--enter"
+            : fillState === "exit"
+              ? "hover-fill-bg--exit"
+              : ""
+        }`}
         aria-hidden
+        onAnimationEnd={() => {
+          if (fillState === "exit") setFillState("idle");
+        }}
       />
-      <span className="relative z-10 text-black transition-colors duration-300 group-hover:text-white">
+      <span
+        className={`hover-fill-text relative z-10 ${
+          fillState === "enter" ? "text-white" : "text-black"
+        }`}
+      >
         {children}
       </span>
     </a>

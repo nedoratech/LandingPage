@@ -206,3 +206,38 @@ body {
 body:has(#mobile-nav-toggle:checked) {
   overflow: hidden;
 }
+
+/* Pill button hover fill — in from below, out upward */
+@keyframes hover-fill-in {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes hover-fill-out {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+.hover-fill-bg {
+  transform: translateY(100%);
+}
+
+.hover-fill-bg--enter {
+  animation: hover-fill-in 0.3s ease-out forwards;
+}
+
+.hover-fill-bg--exit {
+  animation: hover-fill-out 0.3s ease-out forwards;
+}
+
+.hover-fill-text {
+  transition: color 0.3s ease-out;
+}
