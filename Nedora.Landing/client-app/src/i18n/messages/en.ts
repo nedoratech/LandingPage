@@ -27,6 +27,7 @@ export const en = {
       "Nedora designs and delivers enterprise-grade applications and integrations. We offer fixed-scope projects and time-based engagements—so you get predictability, flexibility, or both.",
     primaryCta: "Request an offer",
     secondaryCta: "See our work",
+    scrollDownLabel: "Scroll to next section",
   },
   solutions: {
     title: "What we build",

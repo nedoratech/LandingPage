@@ -29,6 +29,7 @@ export const ro: Messages = {
       "Nedora proiectează și livrează aplicații și integrări de nivel enterprise. Oferim proiecte cu scop fix și colaborări pe bază de timp—predictibilitate, flexibilitate sau ambele.",
     primaryCta: "Solicită o ofertă",
     secondaryCta: "Vezi proiectele",
+    scrollDownLabel: "Derulează la secțiunea următoare",
   },
   solutions: {
     title: "Ce construim",

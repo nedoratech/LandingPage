@@ -13,7 +13,7 @@ export function SolutionsSection() {
   const { t } = useLocale();
 
   return (
-    <Section id={SECTION_IDS.solutions} muted>
+    <Section id={SECTION_IDS.solutions} muted className="relative z-10">
       <Container>
         <SectionHeader title={t.solutions.title} subtitle={t.solutions.subtitle} />
         <div className="grid gap-6 md:grid-cols-3">

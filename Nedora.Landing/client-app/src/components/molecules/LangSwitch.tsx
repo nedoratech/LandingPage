@@ -16,7 +16,7 @@ export function LangSwitch({ variant = "default" }: LangSwitchProps) {
 
   return (
     <div
-      className={`relative inline-flex shrink-0 items-center ${isFooter ? "min-w-[6.5rem]" : "w-[4.5rem] md:w-auto"}`}
+      className={`group relative inline-flex shrink-0 items-center ${isFooter ? "min-w-[6.5rem]" : "w-[4.5rem] md:w-auto"}`}
     >
       <select
         value={locale}
@@ -24,7 +24,7 @@ export function LangSwitch({ variant = "default" }: LangSwitchProps) {
         aria-label={t.nav.languageLabel}
         className={
           isFooter
-            ? "w-full appearance-none rounded-md border border-neutral-600 bg-neutral-800 py-1 pl-2.5 pr-6 text-left text-xs font-normal text-white transition-colors hover:border-neutral-500 focus:border-neutral-400 focus:outline-none focus:ring-1 focus:ring-neutral-400"
+            ? "link-interactive w-full appearance-none rounded-md border border-neutral-600 bg-neutral-800 py-1 pl-2.5 pr-6 text-left text-xs font-normal text-white hover:border-primary-blue hover:text-primary-blue focus:border-neutral-400 focus:outline-none focus:ring-1 focus:ring-neutral-400"
             : "w-full appearance-none rounded-md border border-neutral-300 bg-white py-1.5 pl-2 pr-7 text-center text-sm font-normal text-black transition-colors hover:border-neutral-400 focus:border-black focus:outline-none focus:ring-1 focus:ring-black md:py-2 md:text-base"
         }
       >
@@ -38,7 +38,7 @@ export function LangSwitch({ variant = "default" }: LangSwitchProps) {
         icon={faChevronDown}
         className={
           isFooter
-            ? "pointer-events-none absolute right-1.5 top-1/2 h-2 w-2 -translate-y-1/2 text-neutral-400"
+            ? "pointer-events-none absolute right-1.5 top-1/2 h-2 w-2 -translate-y-1/2 text-neutral-400 transition-colors duration-300 group-hover:text-primary-blue"
             : "pointer-events-none absolute right-2 top-1/2 h-2.5 w-2.5 -translate-y-1/2 text-neutral-500 md:right-3 md:h-3 md:w-3"
         }
         aria-hidden

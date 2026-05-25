@@ -23,6 +23,7 @@
 :root {
   --background: #ffffff;
   --foreground: #0a0a0a;
+  --primary-blue: #007aff;
   --font-futura: Futura, system-ui, sans-serif;
 
   /* Root & type scale — all rem (1rem = root font size below) */
@@ -41,8 +42,10 @@
 }
 
 @theme inline {
+  --breakpoint-nav-compact: 87.5rem; /* 1400px — compact centered nav pill */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary-blue: var(--primary-blue);
   --font-sans: var(--font-futura);
 
   --text-xs: var(--text-xs);
@@ -240,4 +243,181 @@ body:has(#mobile-nav-toggle:checked) {
 
 .hover-fill-text {
   transition: color 0.3s ease-out;
+}
+
+/* Site-wide link hover — footer, inline links, etc. */
+.link-interactive,
+.footer-interactive {
+  transition: color 0.3s ease-out, border-color 0.3s ease-out,
+    background-color 0.3s ease-out;
+}
+
+.link-interactive:hover,
+.footer-interactive:hover {
+  color: var(--primary-blue);
+}
+
+.scroll-section-btn {
+  animation: scroll-section-bounce 2s ease-in-out infinite;
+}
+
+@keyframes scroll-section-bounce {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(0.35rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-section-btn {
+    animation: none;
+  }
+}
+
+/* Hero — sticky full-bleed background, foreground panel scrolls away */
+.hero-scroll {
+  display: grid;
+  isolation: isolate;
+}
+
+.hero-scroll > * {
+  grid-area: 1 / 1;
+}
+
+.hero-scroll__bg-layer {
+  pointer-events: none;
+}
+
+.hero-scroll__bg-sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 32rem;
+  overflow: hidden;
+}
+
+.hero-scroll__media {
+  position: absolute;
+  inset: 0;
+  transform: scale(1.14);
+  will-change: transform;
+}
+
+.hero-scroll__media--revealed {
+  animation: hero-image-zoom-out 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes hero-image-zoom-out {
+  from {
+    transform: scale(1.14);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+.hero-scroll__flash {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: #fff;
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 0.55s ease-out;
+}
+
+.hero-scroll__flash--done {
+  opacity: 0;
+}
+
+.hero-scroll__reveal {
+  height: min(42vh, 24rem);
+}
+
+.hero-scroll__foreground {
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-scroll__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: calc(100svh - 25rem);
+}
+
+@media (width >= 40rem) {
+  .hero-scroll__content {
+    margin-top: calc(100svh - 18rem);
+  }
+}
+
+@media (width >= 64rem) {
+  .hero-scroll__content {
+    margin-top: calc(100svh - 19rem);
+  }
+}
+
+.hero-scroll__foreground > * {
+  pointer-events: auto;
+}
+
+.hero-scroll__panel {
+  margin-inline: auto;
+  width: 100%;
+  text-align: left;
+  background: #fff;
+  border: 1px solid rgb(0 0 0 / 0.08);
+  box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 0.14);
+  opacity: 0;
+  transform: translateY(2.5rem);
+  will-change: opacity, transform;
+}
+
+.hero-scroll__panel--revealed {
+  animation: hero-panel-enter 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.25s forwards;
+}
+
+@keyframes hero-panel-enter {
+  from {
+    opacity: 0;
+    transform: translateY(2.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll__reveal {
+    height: 0;
+  }
+
+  .hero-scroll__media {
+    transform: none;
+  }
+
+  .hero-scroll__media--revealed {
+    animation: none;
+  }
+
+  .hero-scroll__flash {
+    transition-duration: 0.15s;
+  }
+
+  .hero-scroll__panel {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-scroll__panel--revealed {
+    animation: none;
+  }
 }

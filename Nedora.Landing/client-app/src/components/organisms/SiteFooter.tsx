@@ -23,7 +23,7 @@ function FooterLink({
   className: string;
 }) {
   return (
-    <a href={href} className={`transition-opacity hover:opacity-80 ${className}`}>
+    <a href={href} className={`link-interactive text-white ${className}`}>
       {children}
     </a>
   );
@@ -31,7 +31,7 @@ function FooterLink({
 
 function SocialIcon({ children }: { children: React.ReactNode }) {
   return (
-    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-neutral-900">
+    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-neutral-900 transition-colors duration-300 group-hover:bg-primary-blue group-hover:text-white">
       {children}
     </span>
   );
@@ -143,7 +143,7 @@ export function SiteFooter() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="transition-opacity hover:opacity-80"
+                    className="group"
                   >
                     <SocialIcon>{icon}</SocialIcon>
                   </a>

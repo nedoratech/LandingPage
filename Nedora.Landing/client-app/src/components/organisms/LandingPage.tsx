@@ -10,13 +10,16 @@ import { EngagementSection } from "@/components/organisms/EngagementSection";
 import { ShowcaseSection } from "@/components/organisms/ShowcaseSection";
 import { ContactSection } from "@/components/organisms/ContactSection";
 import { SiteFooter } from "@/components/organisms/SiteFooter";
+import { ScrollSectionButton } from "@/components/molecules/ScrollSectionButton";
 
 export function LandingPage() {
   return (
     <LandingTemplate>
-      <SiteHeader />
-      <main>
+      <div className="relative">
         <HeroSection />
+        <SiteHeader overlay />
+      </div>
+      <main>
         <SolutionsSection />
         <WhyNedoraSection />
         <ProcessSection />
@@ -25,6 +28,7 @@ export function LandingPage() {
         <ContactSection />
       </main>
       <SiteFooter />
+      <ScrollSectionButton />
     </LandingTemplate>
   );
 }

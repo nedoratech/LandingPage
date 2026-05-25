@@ -62,13 +62,27 @@ function MobileMenuLinks({ t }: { t: Messages }) {
   );
 }
 
-export function SiteHeader() {
+type SiteHeaderProps = {
+  /** Fixed over the hero; does not push page content down */
+  overlay?: boolean;
+};
+
+const headerShellClass =
+  "px-4 pt-4 sm:px-6 sm:pt-5 lg:px-10 lg:pt-6 nav-compact:px-8";
+
+export function SiteHeader({ overlay = false }: SiteHeaderProps) {
   const { t } = useLocale();
 
   return (
-    <header className="sticky top-0 z-[200] px-4 pt-4 sm:px-6 sm:pt-5 lg:px-8 lg:pt-6">
-      <div className="relative mx-auto w-full lg:max-w-2xl xl:max-w-3xl">
-        {/* Checkbox + label — opens/closes without React (works if JS hydration fails) */}
+    <header
+      className={
+        overlay
+          ? `pointer-events-none fixed inset-x-0 top-0 z-[200] ${headerShellClass}`
+          : `sticky top-0 z-[200] ${headerShellClass}`
+      }
+    >
+      <div className="pointer-events-auto relative mx-auto w-full lg:max-w-[90rem] nav-compact:max-w-3xl">
+        {/* Mobile: below 1024px (lg) */}
         <div className="mobile-nav relative w-full lg:hidden">
           <input
             type="checkbox"
@@ -109,16 +123,19 @@ export function SiteHeader() {
           </nav>
         </div>
 
-        {/* Desktop */}
-        <div className={`relative hidden rounded-full lg:block ${pillShadow}`}>
+        {/* Desktop: 1024px–1399px full-width bar; 1400px+ compact pill (unchanged) */}
+        <div className={`relative hidden w-full rounded-full lg:block nav-compact:w-auto ${pillShadow}`}>
           <div
             className="pointer-events-none absolute inset-0 rounded-full bg-white/90 backdrop-blur-lg"
             aria-hidden
           />
-          <div className="relative z-10 flex items-center justify-between gap-3 p-4">
+          <div className="relative z-10 flex w-full items-center justify-between gap-3 p-4 lg:gap-4 lg:px-5">
             <Logo priority className="h-6 w-auto shrink-0 sm:h-7" />
-            <div className="flex items-center gap-2 xl:gap-3">
-              <nav aria-label="Main" className="flex items-center gap-2 xl:gap-3">
+            <div className="flex min-w-0 flex-1 items-center justify-end gap-2 nav-compact:flex-none lg:gap-3">
+              <nav
+                aria-label="Main"
+                className="flex flex-1 items-center justify-center gap-2 nav-compact:flex-none nav-compact:justify-start lg:gap-3"
+              >
                 {navItems.map(({ id, labelKey }) => (
                   <NavHoverLink key={id} href={`#${id}`} variant="nav">
                     {t.nav[labelKey]}

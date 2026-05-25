@@ -36,3 +36,13 @@ export const SECTION_IDS = {
   showcase: "showcase",
   contact: "contact",
 } as const;
+
+/** Order for the fixed scroll-down control (hero → first id → … → contact) */
+export const SECTION_SCROLL_ORDER = [
+  SECTION_IDS.solutions,
+  SECTION_IDS.why,
+  SECTION_IDS.process,
+  SECTION_IDS.engagement,
+  SECTION_IDS.showcase,
+  SECTION_IDS.contact,
+] as const;
