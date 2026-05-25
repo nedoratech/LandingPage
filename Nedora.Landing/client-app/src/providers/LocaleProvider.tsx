@@ -22,34 +22,30 @@ const LocaleContext = createContext<LocaleContextValue | null>(null);
 
 export function LocaleProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>(defaultLocale);
-  const [hasHydrated, setHasHydrated] = useState(false);
 
   useEffect(() => {
-    setHasHydrated(true);
     const detected = detectBrowserLocale();
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional locale hydration
     setLocaleState(detected);
     document.documentElement.lang = detected;
+  }, []);
+
+  const setLocale = useCallback((next: Locale) => {
+    setLocaleState(next);
+    window.localStorage.setItem(LOCALE_STORAGE_KEY, next);
+    document.documentElement.lang = next;
   }, []);
 
   useEffect(() => {
     document.documentElement.lang = locale;
   }, [locale]);
 
-  const setLocale = useCallback((next: Locale) => {
-    setLocaleState(next);
-    window.localStorage.setItem(LOCALE_STORAGE_KEY, next);
-  }, []);
-
-  const activeLocale = hasHydrated ? locale : defaultLocale;
-
   const value = useMemo(
     () => ({
-      locale: activeLocale,
+      locale,
       setLocale,
-      t: messages[activeLocale],
+      t: messages[locale],
     }),
-    [activeLocale, setLocale],
+    [locale, setLocale],
   );
 
   return (

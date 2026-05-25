@@ -6,9 +6,11 @@ import { SECTION_IDS } from "@/lib/constants";
 import { useLocale } from "@/providers/LocaleProvider";
 import type { Messages } from "@/i18n/messages";
 
+const MOBILE_NAV_TOGGLE_ID = "mobile-nav-toggle";
+
 const pillShadow = "shadow-[0_0.25rem_1.25rem_0_rgb(0_0_0/0.08)]";
 const mobileMenuLink =
-  "inline-flex items-center justify-center self-end rounded-full bg-white px-5 py-2 text-sm font-bold text-black shadow-[0_0.25rem_1rem_0_rgb(0_0_0/0.08)]";
+  "mobile-nav__link inline-flex items-center justify-center self-end rounded-full bg-white px-5 py-2 text-sm font-bold text-black shadow-[0_0.25rem_1rem_0_rgb(0_0_0/0.08)]";
 const mobileMenuLinkCta = `${mobileMenuLink} bg-neutral-200`;
 
 const navItems = [
@@ -21,17 +23,19 @@ const navItems = [
 
 function MenuIcon() {
   return (
-    <span className="relative flex h-4 w-4 flex-col items-center justify-center" aria-hidden>
-      <span className="absolute h-0.5 w-4 -translate-y-1.5 rounded-full bg-white transition-transform duration-200 group-open:translate-y-0 group-open:rotate-45" />
-      <span className="h-0.5 w-4 rounded-full bg-white transition-opacity duration-200 group-open:opacity-0" />
-      <span className="absolute h-0.5 w-4 translate-y-1.5 rounded-full bg-white transition-transform duration-200 group-open:translate-y-0 group-open:-rotate-45" />
+    <span className="mobile-nav__icon relative flex h-4 w-4 flex-col items-center justify-center" aria-hidden>
+      <span className="mobile-nav__icon-bar mobile-nav__icon-bar--top absolute h-0.5 w-4 rounded-full bg-white" />
+      <span className="mobile-nav__icon-bar mobile-nav__icon-bar--mid h-0.5 w-4 rounded-full bg-white" />
+      <span className="mobile-nav__icon-bar mobile-nav__icon-bar--bottom absolute h-0.5 w-4 rounded-full bg-white" />
     </span>
   );
 }
 
-function closeMobileNav(link: HTMLAnchorElement) {
-  const details = link.closest("details");
-  if (details) details.open = false;
+function closeMobileMenu() {
+  const toggle = document.getElementById(MOBILE_NAV_TOGGLE_ID);
+  if (toggle instanceof HTMLInputElement) {
+    toggle.checked = false;
+  }
 }
 
 function MobileMenuLinks({ t }: { t: Messages }) {
@@ -42,7 +46,7 @@ function MobileMenuLinks({ t }: { t: Messages }) {
           key={id}
           href={`#${id}`}
           className={mobileMenuLink}
-          onClick={(event) => closeMobileNav(event.currentTarget)}
+          onClick={closeMobileMenu}
         >
           {t.nav[labelKey]}
         </a>
@@ -50,7 +54,7 @@ function MobileMenuLinks({ t }: { t: Messages }) {
       <a
         href={`#${SECTION_IDS.contact}`}
         className={mobileMenuLinkCta}
-        onClick={(event) => closeMobileNav(event.currentTarget)}
+        onClick={closeMobileMenu}
       >
         {t.nav.cta}
       </a>
@@ -64,42 +68,51 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-[200] px-4 pt-4 sm:px-6 sm:pt-5 lg:px-8 lg:pt-6">
       <div className="relative mx-auto w-full lg:max-w-2xl xl:max-w-3xl">
-        {/* Mobile — pill stays in <summary> so logo stays visible when menu is closed */}
-        <details className="mobile-nav-details group relative w-full lg:hidden">
-          <summary
-            className="cursor-pointer list-none [&::-webkit-details-marker]:hidden"
-            aria-label={t.nav.menuOpen}
+        {/* Checkbox + label — opens/closes without React (works if JS hydration fails) */}
+        <div className="mobile-nav relative w-full lg:hidden">
+          <input
+            type="checkbox"
+            id={MOBILE_NAV_TOGGLE_ID}
+            className="mobile-nav__toggle"
+            aria-hidden
+            tabIndex={-1}
+          />
+
+          <div
+            className={`mobile-nav__bar relative z-[220] flex items-center justify-between gap-3 rounded-full bg-white p-[0.75rem] ${pillShadow}`}
           >
-            <div
-              className={`flex items-center justify-between gap-3 rounded-full bg-white p-4 ${pillShadow}`}
+            <Logo priority className="h-6 w-auto shrink-0 sm:h-7" />
+            <label
+              htmlFor={MOBILE_NAV_TOGGLE_ID}
+              className="mobile-nav__trigger relative z-[221] flex h-10 w-10 shrink-0 cursor-pointer touch-manipulation items-center justify-center rounded-full bg-black"
+              aria-label={t.nav.menuOpen}
             >
-              <span onClick={(event) => event.stopPropagation()}>
-                <Logo priority className="h-6 w-auto shrink-0 sm:h-7" />
-              </span>
-              <span
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black"
-                aria-hidden
-              >
-                <MenuIcon />
-              </span>
-            </div>
-          </summary>
+              <MenuIcon />
+            </label>
+          </div>
+
+          <label
+            htmlFor={MOBILE_NAV_TOGGLE_ID}
+            className="mobile-nav__backdrop"
+            aria-hidden
+            tabIndex={-1}
+          />
 
           <nav
             id="mobile-nav-panel"
-            className="mobile-nav-panel absolute inset-x-0 top-full z-[205] mt-3 w-full"
+            className="mobile-nav__panel absolute inset-x-0 top-full z-[205] mt-3 w-full"
             aria-label="Mobile"
           >
-            <div className="mobile-nav-panel-inner flex flex-col items-end gap-2">
+            <div className="mobile-nav__panel-inner flex flex-col items-end gap-2">
               <MobileMenuLinks t={t} />
             </div>
           </nav>
-        </details>
+        </div>
 
         {/* Desktop */}
         <div className={`relative hidden rounded-full lg:block ${pillShadow}`}>
           <div
-            className="pointer-events-none absolute inset-0 rounded-full bg-white/75 backdrop-blur-lg"
+            className="pointer-events-none absolute inset-0 rounded-full bg-white/90 backdrop-blur-lg"
             aria-hidden
           />
           <div className="relative z-10 flex items-center justify-between gap-3 p-4">

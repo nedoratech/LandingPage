@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LocaleProvider } from "@/providers/LocaleProvider";
 import { BRAND_LOGO, HERO_IMAGE, WORK_IMAGE } from "@/lib/constants";
+import "@/lib/fontawesome";
 import { FONT_PRELOADS } from "@/lib/fonts";
 import "./globals.css";
 
@@ -21,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full antialiased">
+    <html lang="en" className="h-full antialiased" suppressHydrationWarning>
       <head>
         <link
           rel="preload"
