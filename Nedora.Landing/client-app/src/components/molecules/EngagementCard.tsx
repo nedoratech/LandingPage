@@ -12,7 +12,7 @@ export function EngagementCard({
   bullets: readonly string[];
 }) {
   return (
-    <Card>
+    <Card surface="muted" className="rounded-2xl border-0">
       <Heading level={3} className="mb-3">
         {title}
       </Heading>

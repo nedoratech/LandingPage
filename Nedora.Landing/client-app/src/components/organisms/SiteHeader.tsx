@@ -18,7 +18,6 @@ const navItems = [
   { id: SECTION_IDS.why, labelKey: "why" as const },
   { id: SECTION_IDS.process, labelKey: "process" as const },
   { id: SECTION_IDS.engagement, labelKey: "engagement" as const },
-  { id: SECTION_IDS.showcase, labelKey: "work" as const },
 ] as const;
 
 function MenuIcon() {

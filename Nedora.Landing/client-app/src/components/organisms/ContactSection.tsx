@@ -1,21 +1,34 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, type ReactNode } from "react";
 import { Button } from "@/components/atoms/Button";
-import { Input } from "@/components/atoms/Input";
-import { Label } from "@/components/atoms/Label";
 import { Section } from "@/components/atoms/Section";
 import { Textarea } from "@/components/atoms/Textarea";
 import { Heading } from "@/components/atoms/Heading";
 import { Text } from "@/components/atoms/Text";
-import { Container, SectionHeader } from "@/components/templates/LandingTemplate";
+import { ContactIconField } from "@/components/molecules/ContactIconField";
+import { ContactSelectField } from "@/components/molecules/ContactSelectField";
 import { SECTION_IDS } from "@/lib/constants";
+import { contactFieldIcons } from "@/lib/icons";
 import { contactSchema } from "@/lib/validation/contact";
 import { useLocale } from "@/providers/LocaleProvider";
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
 type FieldErrors = Partial<Record<string, string>>;
+
+const textareaClass =
+  "min-h-[8.5rem] resize-y border-0 bg-white px-4 py-3.5 text-base shadow-none rounded-xl focus:border-transparent focus:ring-2 focus:ring-primary-blue/30";
+
+function ContactCard({ children }: { children: ReactNode }) {
+  return (
+    <div className="w-full px-6 lg:mx-auto lg:max-w-[90rem] lg:px-10 xl:max-w-[100rem] xl:px-12">
+      <div className="mx-auto w-full max-w-5xl rounded-2xl bg-[#f1f4f6] px-10 py-11 sm:px-12 sm:py-14">
+        {children}
+      </div>
+    </div>
+  );
+}
 
 export function ContactSection() {
   const { t, locale } = useLocale();
@@ -86,151 +99,139 @@ export function ContactSection() {
 
   if (state === "success") {
     return (
-      <Section id={SECTION_IDS.contact}>
-        <Container className="max-w-xl text-center">
-          <Heading level={2}>{t.contact.successTitle}</Heading>
-          <Text className="mt-4" muted>
-            {t.contact.successMessage}
-          </Text>
-          <Button
-            type="button"
-            variant="secondary"
-            className="mt-8"
-            onClick={() => setState("idle")}
-          >
-            {t.contact.submit}
-          </Button>
-        </Container>
+      <Section id={SECTION_IDS.contact} className="!bg-white py-16 sm:py-20" revealOnView={false}>
+        <ContactCard>
+          <div className="mx-auto max-w-xl text-center">
+            <Heading level={2}>{t.contact.successTitle}</Heading>
+            <Text className="mt-4" muted>
+              {t.contact.successMessage}
+            </Text>
+            <Button
+              type="button"
+              variant="secondary"
+              className="mt-8"
+              onClick={() => setState("idle")}
+            >
+              {t.contact.submit}
+            </Button>
+          </div>
+        </ContactCard>
       </Section>
     );
   }
 
   return (
-    <Section id={SECTION_IDS.contact}>
-      <Container>
-        <SectionHeader title={t.contact.title} subtitle={t.contact.subtitle} />
-        <form
-          onSubmit={handleSubmit}
-          className="mx-auto max-w-xl space-y-5"
-          noValidate
-        >
-          <input
-            type="text"
-            name="website"
-            tabIndex={-1}
-            autoComplete="off"
-            className="hidden"
-            aria-hidden
-          />
+    <Section id={SECTION_IDS.contact} className="!bg-white py-16 sm:py-20" revealOnView={false}>
+      <ContactCard>
+        <div className="mx-auto w-full max-w-xl sm:max-w-2xl">
+          <p className="text-sm font-normal text-neutral-500">{t.contact.eyebrow}</p>
+          <h2 className="mt-2 text-3xl font-bold tracking-normal text-black sm:text-4xl">
+            {t.contact.title}
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-neutral-600">
+            {t.contact.subtitle}
+          </p>
 
-          <div>
-            <Label htmlFor="name" required>
-              {t.contact.name}
-            </Label>
-            <Input id="name" name="name" autoComplete="name" className="mt-1" />
-            {errors.name ? (
-              <p className="mt-1 text-sm text-red-600">{errors.name}</p>
-            ) : null}
-          </div>
-
-          <div>
-            <Label htmlFor="email" required>
-              {t.contact.email}
-            </Label>
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              autoComplete="email"
-              className="mt-1"
+          <form
+            onSubmit={handleSubmit}
+            className="mt-10 space-y-4"
+            noValidate
+          >
+            <input
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              className="hidden"
+              aria-hidden
             />
-            {errors.email ? (
-              <p className="mt-1 text-sm text-red-600">{errors.email}</p>
-            ) : null}
-          </div>
 
-          <div>
-            <Label htmlFor="company" required>
-              {t.contact.company}
-            </Label>
-            <Input
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <ContactIconField
+                id="name"
+                name="name"
+                icon={contactFieldIcons.name}
+                placeholder={t.contact.name}
+                autoComplete="name"
+                required
+                error={errors.name}
+              />
+              <ContactIconField
+                id="email"
+                name="email"
+                type="email"
+                icon={contactFieldIcons.email}
+                placeholder={t.contact.email}
+                autoComplete="email"
+                required
+                error={errors.email}
+              />
+            </div>
+
+            <ContactIconField
               id="company"
               name="company"
+              icon={contactFieldIcons.company}
+              placeholder={t.contact.company}
               autoComplete="organization"
-              className="mt-1"
+              required
+              error={errors.company}
             />
-            {errors.company ? (
-              <p className="mt-1 text-sm text-red-600">{errors.company}</p>
-            ) : null}
-          </div>
 
-          <div>
-            <Label htmlFor="projectType" required>
-              {t.contact.projectType}
-            </Label>
-            <select
+            <ContactSelectField
               id="projectType"
               name="projectType"
+              required
               defaultValue=""
-              className="mt-1 w-full rounded-md border border-neutral-300 bg-white px-3 py-2.5 text-base focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
+              placeholder={t.contact.projectType}
+              error={errors.projectType}
             >
-              <option value="" disabled />
               <option value="newApp">{t.contact.projectTypes.newApp}</option>
               <option value="integration">
                 {t.contact.projectTypes.integration}
               </option>
               <option value="support">{t.contact.projectTypes.support}</option>
               <option value="unsure">{t.contact.projectTypes.unsure}</option>
-            </select>
-            {errors.projectType ? (
-              <p className="mt-1 text-sm text-red-600">{errors.projectType}</p>
-            ) : null}
-          </div>
+            </ContactSelectField>
 
-          <div>
-            <Label htmlFor="engagement" required>
-              {t.contact.engagement}
-            </Label>
-            <select
+            <ContactSelectField
               id="engagement"
               name="engagement"
+              required
               defaultValue=""
-              className="mt-1 w-full rounded-md border border-neutral-300 bg-white px-3 py-2.5 text-base focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
+              placeholder={t.contact.engagement}
+              error={errors.engagement}
             >
-              <option value="" disabled />
               <option value="fixed">{t.contact.engagementOptions.fixed}</option>
               <option value="time">{t.contact.engagementOptions.time}</option>
               <option value="unsure">{t.contact.engagementOptions.unsure}</option>
-            </select>
-            {errors.engagement ? (
-              <p className="mt-1 text-sm text-red-600">{errors.engagement}</p>
-            ) : null}
-          </div>
+            </ContactSelectField>
 
-          <div>
-            <Label htmlFor="message" required>
-              {t.contact.message}
-            </Label>
-            <Textarea
-              id="message"
-              name="message"
-              rows={5}
-              className="mt-1"
-            />
-            {errors.message ? (
-              <p className="mt-1 text-sm text-red-600">{errors.message}</p>
-            ) : null}
-          </div>
+            <div>
+              <Textarea
+                id="message"
+                name="message"
+                rows={5}
+                required
+                placeholder={t.contact.message}
+                aria-invalid={errors.message ? true : undefined}
+                aria-describedby={errors.message ? "message-error" : undefined}
+                className={textareaClass}
+              />
+              {errors.message ? (
+                <p id="message-error" className="mt-1.5 text-sm text-red-600">
+                  {errors.message}
+                </p>
+              ) : null}
+            </div>
 
-          <div>
-            <Label htmlFor="timeline">{t.contact.timeline}</Label>
-            <select
+            <ContactSelectField
               id="timeline"
               name="timeline"
+              optional
               defaultValue=""
-              className="mt-1 w-full rounded-md border border-neutral-300 bg-white px-3 py-2.5 text-base focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
+              placeholder={t.contact.timeline}
             >
-              <option value="" />
               <option value="asap">{t.contact.timelineOptions.asap}</option>
               <option value="oneToThree">
                 {t.contact.timelineOptions.oneToThree}
@@ -241,36 +242,44 @@ export function ContactSection() {
               <option value="exploring">
                 {t.contact.timelineOptions.exploring}
               </option>
-            </select>
-          </div>
+            </ContactSelectField>
 
-          <div className="flex items-start gap-2">
-            <input
-              id="privacy"
-              name="privacy"
-              type="checkbox"
-              className="mt-1 h-4 w-4 rounded border-neutral-300"
-            />
-            <label htmlFor="privacy" className="text-base text-neutral-700">
-              {t.contact.privacy}{" "}
-              <a href="/privacy" className="underline hover:text-black">
-                {t.footer.privacy}
-              </a>
-            </label>
-          </div>
-          {errors.privacy ? (
-            <p className="text-sm text-red-600">{errors.privacy}</p>
-          ) : null}
+            <div className="flex items-start gap-2.5 pt-2">
+              <input
+                id="privacy"
+                name="privacy"
+                type="checkbox"
+                className="mt-1 h-4 w-4 rounded border-neutral-300"
+              />
+              <label htmlFor="privacy" className="text-sm text-neutral-600">
+                {t.contact.privacy}{" "}
+                <a
+                  href="/privacy"
+                  className="underline hover:text-black"
+                >
+                  {t.footer.privacy}
+                </a>
+              </label>
+            </div>
+            {errors.privacy ? (
+              <p className="text-sm text-red-600">{errors.privacy}</p>
+            ) : null}
 
-          {state === "error" ? (
-            <p className="text-sm text-red-600">{t.contact.errorMessage}</p>
-          ) : null}
+            {state === "error" ? (
+              <p className="text-sm text-red-600">{t.contact.errorMessage}</p>
+            ) : null}
 
-          <Button type="submit" disabled={state === "submitting"}>
-            {state === "submitting" ? t.contact.submitting : t.contact.submit}
-          </Button>
-        </form>
-      </Container>
+            <Button
+              type="submit"
+              variant="cta"
+              className="w-full sm:w-auto"
+              disabled={state === "submitting"}
+            >
+              {state === "submitting" ? t.contact.submitting : t.contact.submit}
+            </Button>
+          </form>
+        </div>
+      </ContactCard>
     </Section>
   );
 }

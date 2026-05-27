@@ -31,25 +31,58 @@ export const ro: Messages = {
     secondaryCta: "Vezi proiectele",
     scrollDownLabel: "Derulează la secțiunea următoare",
   },
-  solutions: {
-    title: "Ce construim",
-    subtitle:
-      "Colaborările pot fi proiecte cu scop fix sau parteneriate pe bază de timp, în funcție de claritatea cerințelor și modul în care lucrează echipa ta.",
+  facts: {
+    title: "Cifre și date",
     items: [
       {
-        title: "Aplicații enterprise la comandă",
-        description:
-          "Sisteme dedicate fluxurilor critice—înlocuind foi de calcul, tool-uri vechi și soluții fragile cu software în care echipele pot avea încredere zilnic.",
+        value: "10",
+        suffix: "+",
+        label: "Ani de experiență",
       },
       {
-        title: "Integrare și modernizare",
-        description:
-          "Conectăm ERP, CRM, finanțe și sisteme de business. Modernizare treptată, fără a opri operațiunile.",
+        value: "350",
+        suffix: "k+",
+        label: "Linii de cod scrise",
       },
       {
-        title: "Evoluție și suport pe termen lung",
+        value: "25",
+        suffix: "+",
+        label: "Clienți mulțumiți",
+      },
+    ],
+  },
+  coreValues: {
+    title: "La ce ne poți ține cont",
+    subtitle:
+      "Software-ul enterprise funcționează doar când furnizorul e predictibil. Acestea sunt angajamentele noastre în fiecare proiect—de la discovery până la ani de rulare în producție.",
+    items: [
+      "Realitatea afacerii tale ghidează fiecare decizie",
+      "Construit pentru producție—nu pentru demo",
+      "Scope și progres pe care te poți baza",
+      "Viteză deliberată, fără compromisuri riscante",
+      "Parteneriat care continuă după go-live",
+      "Software pe care echipa ta îl poate deține și evolua",
+    ],
+  },
+  solutions: {
+    title: "Ce câștigă afacerea ta",
+    subtitle:
+      "Software-ul ar trebui să reducă fricțiunea, riscul și incertitudinea—nu să adauge un alt tool de întreținut. Structurăm colaborarea pentru claritate: proiect cu scop fix când cerințele sunt mature, sau parteneriat continuu când drumul se conturează pe parcurs.",
+    items: [
+      {
+        title: "Operațiuni în care poți avea încredere",
         description:
-          "Roadmap-uri, release-uri și suport astfel încât platforma să țină pasul cu reglementări, volum și cerințe noi.",
+          "Fluxurile critice rulează într-un singur sistem solid, nu în foi de calcul și improvizații. Echipele pierd mai puțin timp cu reconcilierea datelor și mai mult cu clienții și deciziile.",
+      },
+      {
+        title: "O imagine conectată a afacerii",
+        description:
+          "Finanțe, vânzări și operațiuni pornesc de la aceleași date—ca liderii să decidă pe cifre actuale, nu pe exporturi vechi. Modernizarea avansează treptat, fără să oprească businessul.",
+      },
+      {
+        title: "Spațiu de creștere fără reconstrucții",
+        description:
+          "Platforma ține pasul cu reglementări, volum și idei noi—prin release-uri planificate și o echipă care îți cunoaște deja contextul, nu un vendor nou în fiecare an.",
       },
     ],
   },
@@ -78,27 +111,43 @@ export const ro: Messages = {
   process: {
     title: "Cum lucrăm",
     subtitle:
-      "Un parcurs clar de la prima discuție, prin lansare și mai departe.",
+      "Patru faze de la prima discuție la lansare—cu milestone-uri clare și documentație comună.",
     steps: [
       {
         title: "Discover",
         description:
-          "Obiective, constrângeri, sisteme existente și criterii de succes.",
+          "Ne aliniem la obiective, constrângeri și criterii de succes înainte de build.",
+        points: [
+          "Interviuri cu stakeholderi și maparea fluxurilor",
+          "Inventar sisteme, riscuri și dependențe",
+        ],
       },
       {
         title: "Design",
         description:
-          "Arhitectură, model de colaborare (scop fix sau pe timp), calendar și propunere clară.",
+          "Un plan concret pentru stakeholderi—nu estimări vagi.",
+        points: [
+          "Arhitectură, integrări și model de livrare",
+          "Calendar, milestone-uri și propunere scrisă",
+        ],
       },
       {
         title: "Build",
         description:
-          "Livrare iterativă cu review-uri și incremente testabile.",
+          "Livrare iterativă pe care echipa ta o poate testa și aproba.",
+        points: [
+          "Cicluri scurte cu puncte de acceptanță",
+          "Teste, documentație și medii operabile",
+        ],
       },
       {
         title: "Deliver & support",
         description:
-          "Go-live, transfer de cunoștințe și îmbunătățiri continue.",
+          "Go-live și îmbunătățiri continue cu aceeași echipă.",
+        points: [
+          "Suport la cutover și transfer de cunoștințe",
+          "Runbook-uri și roadmap pentru ce urmează",
+        ],
       },
     ],
   },
@@ -177,6 +226,7 @@ export const ro: Messages = {
     ],
   },
   contact: {
+    eyebrow: "Contact",
     title: "Solicită o ofertă",
     subtitle:
       "Spune-ne despre proiectul tău. De obicei răspundem în două zile lucrătoare.",

@@ -29,25 +29,58 @@ export const en = {
     secondaryCta: "See our work",
     scrollDownLabel: "Scroll to next section",
   },
-  solutions: {
-    title: "What we build",
-    subtitle:
-      "Engagements are available as fixed projects or time-based partnerships, depending on scope and how your team works today.",
+  facts: {
+    title: "Facts & figures",
     items: [
       {
-        title: "Custom enterprise applications",
-        description:
-          "Purpose-built systems for core workflows—replacing spreadsheets, legacy tools, and brittle one-offs with software your teams can trust daily.",
+        value: "10",
+        suffix: "+",
+        label: "Years of experience",
       },
       {
-        title: "Integration & modernization",
-        description:
-          "Connect ERP, CRM, finance, and line-of-business systems. Modernize step by step without stopping the business.",
+        value: "350",
+        suffix: "k+",
+        label: "Lines of code written",
       },
       {
-        title: "Long-term evolution & support",
+        value: "25",
+        suffix: "+",
+        label: "Satisfied and happy customers",
+      },
+    ],
+  },
+  coreValues: {
+    title: "What you can count on",
+    subtitle:
+      "Enterprise software only works when your vendor is predictable. These are the commitments we make on every engagement—from discovery through years in production.",
+    items: [
+      "Your business reality shapes every decision",
+      "Built for production—not for demos",
+      "Scope and progress you can plan around",
+      "Deliberate speed, not reckless shortcuts",
+      "Partnership that outlasts go-live",
+      "Software your team can own and evolve",
+    ],
+  },
+  solutions: {
+    title: "What your business gains",
+    subtitle:
+      "Software should reduce friction, risk, and guesswork—not add another tool to babysit. We shape engagements around clarity: fixed scope when requirements are sharp, or a steady partnership when the roadmap is still unfolding.",
+    items: [
+      {
+        title: "Operations you can rely on",
         description:
-          "Roadmaps, releases, and responsive support so your platform grows with regulation, volume, and new requirements.",
+          "Critical workflows run on one dependable system instead of spreadsheets and workarounds. Teams spend less time reconciling data and more time serving customers and making decisions.",
+      },
+      {
+        title: "A connected view of the business",
+        description:
+          "Finance, sales, and operations draw from the same reality—so leaders act on current numbers, not stale exports. Modernization happens in measured steps, without freezing the business.",
+      },
+      {
+        title: "Room to grow without rework",
+        description:
+          "Your platform keeps pace with regulation, volume, and new ideas—through planned releases and a team that already knows your context, not a fresh vendor every year.",
       },
     ],
   },
@@ -76,27 +109,43 @@ export const en = {
   process: {
     title: "How we work",
     subtitle:
-      "A straightforward path from the first conversation through launch and beyond.",
+      "Four phases from first conversation through launch—with clear milestones and shared documentation.",
     steps: [
       {
         title: "Discover",
         description:
-          "Goals, constraints, existing systems, and success criteria.",
+          "Align on goals, constraints, and success criteria before build starts.",
+        points: [
+          "Stakeholder interviews and workflow mapping",
+          "Systems inventory, risks, and dependencies",
+        ],
       },
       {
         title: "Design",
         description:
-          "Architecture, delivery model (fixed scope or time-based), timeline, and a clear proposal.",
+          "A concrete plan you can take to stakeholders—not vague estimates.",
+        points: [
+          "Architecture, integrations, and delivery model",
+          "Timeline, milestones, and written proposal",
+        ],
       },
       {
         title: "Build",
         description:
-          "Iterative delivery with reviews and testable increments.",
+          "Iterative delivery your team can test and approve along the way.",
+        points: [
+          "Short cycles with acceptance checkpoints",
+          "Tests, documentation, and operable environments",
+        ],
       },
       {
         title: "Deliver & support",
         description:
-          "Go-live, knowledge transfer, and ongoing improvement.",
+          "Go-live and ongoing improvement with the same team that built it.",
+        points: [
+          "Cutover support and knowledge transfer",
+          "Runbooks and roadmap for what comes next",
+        ],
       },
     ],
   },
@@ -175,6 +224,7 @@ export const en = {
     ],
   },
   contact: {
+    eyebrow: "Get in touch",
     title: "Request an offer",
     subtitle:
       "Tell us about your project. We typically respond within two business days.",

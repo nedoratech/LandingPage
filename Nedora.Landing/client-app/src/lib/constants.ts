@@ -29,6 +29,8 @@ export const WORK_IMAGE = {
 } as const;
 
 export const SECTION_IDS = {
+  facts: "facts",
+  coreValues: "core-values",
   solutions: "solutions",
   why: "why",
   process: "process",
@@ -39,10 +41,11 @@ export const SECTION_IDS = {
 
 /** Order for the fixed scroll-down control (hero → first id → … → contact) */
 export const SECTION_SCROLL_ORDER = [
+  SECTION_IDS.facts,
+  SECTION_IDS.coreValues,
   SECTION_IDS.solutions,
   SECTION_IDS.why,
   SECTION_IDS.process,
   SECTION_IDS.engagement,
-  SECTION_IDS.showcase,
   SECTION_IDS.contact,
 ] as const;

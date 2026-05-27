@@ -278,6 +278,59 @@ body:has(#mobile-nav-toggle:checked) {
   }
 }
 
+/* Scroll-triggered section reveal (transition only with --animate) */
+.slide-up-in-view {
+  opacity: 0;
+  transform: translateY(1.25rem);
+}
+
+.slide-up-in-view--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide-up-in-view--animate {
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide-up-in-view {
+    opacity: 1;
+    transform: none;
+  }
+
+  .slide-up-in-view--animate {
+    transition: none;
+  }
+}
+
+/* Facts & figures — stat columns with gradient dividers */
+@media (width >= 48rem) {
+  .facts-figures__stat--divided {
+    border-left: 1px solid transparent;
+    border-image: linear-gradient(
+        180deg,
+        rgb(0 122 255 / 0.12) 0%,
+        var(--primary-blue) 100%
+      )
+      1;
+  }
+}
+
+@media (width < 48rem) {
+  .facts-figures__stat--divided {
+    border-top: 1px solid transparent;
+    border-image: linear-gradient(
+        90deg,
+        rgb(0 122 255 / 0.12) 0%,
+        var(--primary-blue) 100%
+      )
+      1;
+  }
+}
+
 /* Hero — sticky full-bleed background, foreground panel scrolls away */
 .hero-scroll {
   display: grid;
