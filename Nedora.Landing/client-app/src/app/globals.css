@@ -295,8 +295,65 @@ a.text-link:focus-visible::after {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .initial-loader {
+    display: none;
+  }
+}
+
 .scroll-section-btn {
   animation: scroll-section-bounce 2s ease-in-out infinite;
+}
+
+/* Initial loader overlay (first paint) */
+.initial-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  transform: translateY(0);
+  transition:
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.45s ease-out;
+}
+
+.initial-loader--exit {
+  transform: translateY(-100%);
+  opacity: 1;
+}
+
+.initial-loader__inner {
+  width: min(26rem, calc(100vw - 3rem));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.initial-loader__meter {
+  width: 100%;
+  height: 0.35rem;
+  border-radius: 9999px;
+  background: rgb(0 0 0 / 0.08);
+  overflow: hidden;
+}
+
+.initial-loader__bar {
+  height: 100%;
+  width: 100%;
+  border-radius: 9999px;
+  background: var(--primary-blue);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.12s linear;
+}
+
+.initial-loader__percent {
+  font-size: 0.9rem;
+  color: rgb(0 0 0 / 0.55);
+  letter-spacing: 0.08em;
 }
 
 @keyframes scroll-section-bounce {

@@ -1,7 +1,13 @@
 import { type ReactNode } from "react";
+import { InitialLoader } from "@/components/organisms/InitialLoader";
 
 export function LandingTemplate({ children }: { children: ReactNode }) {
-  return <div className="min-h-screen bg-white text-black">{children}</div>;
+  return (
+    <div className="min-h-screen bg-white text-black">
+      <InitialLoader />
+      {children}
+    </div>
+  );
 }
 
 export function Container({
