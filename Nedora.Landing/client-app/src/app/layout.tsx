@@ -6,9 +6,9 @@ import { FONT_PRELOADS } from "@/lib/fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Nedora — Enterprise software development",
+  title: "Nedora — Enterprise Software, Built with Intent",
   description:
-    "Nedora builds enterprise-grade software and integrations for businesses. Fixed-scope and time-based engagements.",
+    "Nedora designs and delivers mission-critical applications and integrations for organisations that can't afford guesswork. Fixed-scope and time-based engagements.",
   icons: {
     icon: BRAND_LOGO.src,
     shortcut: BRAND_LOGO.src,

@@ -6,7 +6,8 @@ type Variant =
   | "ghost"
   | "inverse"
   | "outlineInverse"
-  | "cta";
+  | "cta"
+  | "heroPrimary";
 
 const variants: Record<Variant, string> = {
   primary:
@@ -21,6 +22,8 @@ const variants: Record<Variant, string> = {
     "rounded-md bg-white/10 text-white hover:bg-white/20 border border-white/80 backdrop-blur-sm focus-visible:outline-white",
   cta:
     "rounded-full border border-primary-blue bg-primary-blue px-6 py-2.5 text-sm font-bold text-white transition-colors duration-300 hover:border-black hover:bg-black hover:text-white focus-visible:outline-primary-blue sm:px-8 sm:py-3 sm:text-base",
+  heroPrimary:
+    "rounded-full border border-black bg-white px-6 py-2.5 text-sm font-bold text-black transition-colors duration-300 hover:border-black hover:bg-black hover:text-white focus-visible:outline-black sm:px-8 sm:py-3 sm:text-base",
 };
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {

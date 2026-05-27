@@ -18,7 +18,9 @@ export function Card({
   surface?: keyof typeof cardSurface;
 }) {
   return (
-    <article className={`${cardBase} ${cardSurface[surface]} ${className}`}>
+    <article
+      className={`landing-card ${cardBase} ${cardSurface[surface]} ${className}`}
+    >
       {children}
     </article>
   );

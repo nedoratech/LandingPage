@@ -13,9 +13,9 @@ export function FactsFiguresSection() {
   const { t } = useLocale();
 
   return (
-    <Section id={SECTION_IDS.facts} className="relative z-10 py-16 sm:py-20" revealOnView={false}>
+    <Section id={SECTION_IDS.facts} className="relative z-10 py-8 sm:py-10" revealOnView={false}>
       <Container>
-        <h2 className="mb-12 text-center text-3xl font-bold tracking-normal text-black sm:mb-14 sm:text-4xl">
+        <h2 className="mb-6 text-center text-3xl font-bold tracking-normal text-black sm:mb-7 sm:text-4xl">
           {t.facts.title}
         </h2>
 
@@ -30,7 +30,7 @@ export function FactsFiguresSection() {
               index={index}
               className={`facts-figures__stat px-0 py-8 md:px-10 md:py-4 ${index > 0 ? "facts-figures__stat--divided" : ""}`}
             >
-              <div className="text-center">
+              <div className="landing-card text-center">
                 <p className="text-5xl font-bold leading-none text-primary-blue sm:text-6xl">
                   <span>{item.value}</span>
                   {item.suffix ? (

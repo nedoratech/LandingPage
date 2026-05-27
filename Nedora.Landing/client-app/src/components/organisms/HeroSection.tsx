@@ -46,12 +46,8 @@ export function HeroSection() {
       <div className="hero-scroll__foreground">
         <Container className="hero-scroll__content">
           <div
-            className={`hero-scroll__panel mb-6 max-w-3xl rounded-2xl p-8 sm:mb-8 sm:p-10 lg:max-w-4xl lg:rounded-3xl lg:p-12 ${imageLoaded ? "hero-scroll__panel--revealed" : ""}`}
+            className={`landing-card hero-scroll__panel mb-6 max-w-3xl rounded-2xl p-8 sm:mb-8 sm:p-10 lg:max-w-4xl lg:rounded-3xl lg:p-12 ${imageLoaded ? "hero-scroll__panel--revealed" : ""}`}
           >
-            <p className="mb-5 text-base font-normal uppercase tracking-[0.2em] text-neutral-500">
-              {t.hero.eyebrow}
-            </p>
-
             <Heading level={1} className="text-black">
               {t.hero.headline}
             </Heading>
@@ -60,9 +56,12 @@ export function HeroSection() {
               {t.hero.subhead}
             </p>
 
-            <div className="mt-10">
+            <div className="mt-10 flex flex-wrap gap-4">
               <Button href={`#${SECTION_IDS.contact}`} variant="cta">
                 {t.hero.primaryCta}
+              </Button>
+              <Button href={`#${SECTION_IDS.process}`} variant="heroPrimary">
+                {t.hero.secondaryCta}
               </Button>
             </div>
           </div>

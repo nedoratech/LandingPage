@@ -18,7 +18,7 @@ export function ProcessSection() {
   return (
     <section
       id={SECTION_IDS.process}
-      className="relative z-10 w-full bg-white py-16 sm:py-20 lg:py-16 xl:py-20"
+      className="relative z-10 w-full bg-white py-8 sm:py-10 lg:py-8 xl:py-10"
     >
       <div className="w-full px-6 lg:mx-auto lg:max-w-[90rem] lg:px-10 xl:max-w-[100rem] xl:px-12">
         <div className="relative isolate w-full overflow-hidden rounded-2xl">
@@ -39,7 +39,7 @@ export function ProcessSection() {
             aria-hidden
           />
 
-          <div className="relative z-10 px-6 py-10 sm:px-8 sm:py-12 lg:px-14 lg:py-14 xl:px-16 xl:py-16">
+          <div className="landing-card relative z-10 px-6 py-10 sm:px-8 sm:py-12 lg:px-14 lg:py-14 xl:px-16 xl:py-16">
             <div className="max-w-2xl">
               <h2 className="text-3xl font-bold tracking-normal text-white sm:text-4xl">
                 {t.process.title}
@@ -61,6 +61,10 @@ export function ProcessSection() {
                     </span>
                     <h3 className="text-lg font-bold text-white sm:text-xl">
                       {step.title}
+                      <span className="font-normal text-white/90">
+                        {": "}
+                        {step.tagline}
+                      </span>
                     </h3>
                   </div>
                   <p className="mt-3 text-base leading-relaxed text-white/80 sm:text-lg">

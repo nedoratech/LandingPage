@@ -22,8 +22,8 @@ const textareaClass =
 
 function ContactCard({ children }: { children: ReactNode }) {
   return (
-    <div className="w-full px-6 lg:mx-auto lg:max-w-[90rem] lg:px-10 xl:max-w-[100rem] xl:px-12">
-      <div className="mx-auto w-full max-w-5xl rounded-2xl bg-[#f1f4f6] px-10 py-11 sm:px-12 sm:py-14">
+    <div className="w-full px-4 sm:px-6 lg:mx-auto lg:max-w-[90rem] lg:px-10 xl:max-w-[100rem] xl:px-12">
+      <div className="landing-card mx-auto w-full max-w-5xl rounded-2xl bg-[#f1f4f6] px-5 py-8 sm:px-12 sm:py-14">
         {children}
       </div>
     </div>
@@ -99,7 +99,7 @@ export function ContactSection() {
 
   if (state === "success") {
     return (
-      <Section id={SECTION_IDS.contact} className="!bg-white py-16 sm:py-20" revealOnView={false}>
+      <Section id={SECTION_IDS.contact} className="!bg-white py-8 sm:py-10" revealOnView={false}>
         <ContactCard>
           <div className="mx-auto max-w-xl text-center">
             <Heading level={2}>{t.contact.successTitle}</Heading>
@@ -121,11 +121,10 @@ export function ContactSection() {
   }
 
   return (
-    <Section id={SECTION_IDS.contact} className="!bg-white py-16 sm:py-20" revealOnView={false}>
+    <Section id={SECTION_IDS.contact} className="!bg-white py-8 sm:py-10" revealOnView={false}>
       <ContactCard>
         <div className="mx-auto w-full max-w-xl sm:max-w-2xl">
-          <p className="text-sm font-normal text-neutral-500">{t.contact.eyebrow}</p>
-          <h2 className="mt-2 text-3xl font-bold tracking-normal text-black sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-normal text-black sm:text-4xl">
             {t.contact.title}
           </h2>
           <p className="mt-4 text-base leading-relaxed text-neutral-600">
@@ -253,11 +252,8 @@ export function ContactSection() {
               />
               <label htmlFor="privacy" className="text-sm text-neutral-600">
                 {t.contact.privacy}{" "}
-                <a
-                  href="/privacy"
-                  className="underline hover:text-black"
-                >
-                  {t.footer.privacy}
+                <a href="/privacy" className="text-link">
+                  {t.contact.privacyLink}
                 </a>
               </label>
             </div>

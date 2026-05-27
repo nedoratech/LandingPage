@@ -26,7 +26,7 @@ export function SectionHeader({
   subtitle?: string;
 }) {
   return (
-    <div className="mx-auto mb-12 max-w-2xl text-center">
+    <div className="mx-auto mb-6 max-w-2xl text-center">
       <h2 className="text-3xl font-bold tracking-normal text-black sm:text-4xl">
         {title}
       </h2>

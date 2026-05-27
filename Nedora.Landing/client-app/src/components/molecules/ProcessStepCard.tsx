@@ -23,7 +23,7 @@ export function ProcessStepCard({
 
   return (
     <li
-      className={`relative flex h-full flex-col rounded-lg border p-6 ${cardHover} ${
+      className={`landing-card relative flex h-full flex-col rounded-lg border p-6 ${cardHover} ${
         isOnImage
           ? "border-white/25 bg-white/95 backdrop-blur-sm"
           : "border-neutral-200 bg-white"

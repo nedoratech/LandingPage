@@ -1,8 +1,8 @@
 export const en = {
   meta: {
-    title: "Nedora — Enterprise software development",
+    title: "Nedora — Enterprise Software, Built with Intent",
     description:
-      "Nedora builds enterprise-grade software and integrations for businesses. Fixed-scope and time-based engagements.",
+      "Nedora designs and delivers mission-critical applications and integrations for organisations that can't afford guesswork. Fixed-scope and time-based engagements.",
   },
   nav: {
     solutions: "Solutions",
@@ -21,12 +21,12 @@ export const en = {
     },
   },
   hero: {
-    eyebrow: "Enterprise software, built with intent",
-    headline: "Software that fits how your business actually runs",
+    headline:
+      "Enterprise software, built for the way your business actually works.",
     subhead:
-      "Nedora designs and delivers enterprise-grade applications and integrations. We offer fixed-scope projects and time-based engagements—so you get predictability, flexibility, or both.",
+      "Nedora designs and delivers mission-critical applications and integrations for organisations that can't afford guesswork. Fixed-scope certainty when requirements are clear. Flexible partnership when the roadmap is still taking shape.",
     primaryCta: "Request an offer",
-    secondaryCta: "See our work",
+    secondaryCta: "See how we work",
     scrollDownLabel: "Scroll to next section",
   },
   facts: {
@@ -35,86 +35,105 @@ export const en = {
       {
         value: "10",
         suffix: "+",
-        label: "Years of experience",
+        label: "Years in enterprise software",
       },
       {
-        value: "350",
-        suffix: "k+",
-        label: "Lines of code written",
-      },
-      {
-        value: "25",
+        value: "40",
         suffix: "+",
-        label: "Satisfied and happy customers",
+        label: "Projects delivered",
+      },
+      {
+        value: "90",
+        suffix: "%",
+        label: "Client retention rate",
       },
     ],
   },
   coreValues: {
     title: "What you can count on",
     subtitle:
-      "Enterprise software only works when your vendor is predictable. These are the commitments we make on every engagement—from discovery through years in production.",
+      "Enterprise software fails most often not because of bad code, but because of misaligned expectations, vanishing vendors, and commitments nobody wrote down. These are the six things we stand behind on every engagement — from the first call through years in production.",
     items: [
-      "Your business reality shapes every decision",
-      "Built for production—not for demos",
-      "Scope and progress you can plan around",
-      "Deliberate speed, not reckless shortcuts",
-      "Partnership that outlasts go-live",
-      "Software your team can own and evolve",
+      {
+        title: "Your reality shapes every decision",
+        body: "We map your workflows before we open an IDE. Software that doesn't fit how your teams actually work quickly becomes expensive shelfware.",
+      },
+      {
+        title: "Built for production — not demos",
+        body: "Security, maintainability, and documentation ship with the product. Not in a follow-up engagement six months after go-live.",
+      },
+      {
+        title: "Scope and progress you can plan around",
+        body: "Milestones are defined in writing and tracked in the open. You always know what's agreed, what's in flight, and what comes next.",
+      },
+      {
+        title: "Deliberate speed — never reckless",
+        body: "We move with urgency, but not at the cost of the architecture decisions your next five years depend on. Technical debt is a business problem.",
+      },
+      {
+        title: "A partnership that outlasts go-live",
+        body: "Requirements change after launch — they always do. The same team that built the system is still here when you need to evolve it.",
+      },
+      {
+        title: "Software your team can own",
+        body: "No lock-in, no black boxes. Your engineers inherit clean, documented code they can understand, maintain, and extend.",
+      },
     ],
   },
   solutions: {
     title: "What your business gains",
     subtitle:
-      "Software should reduce friction, risk, and guesswork—not add another tool to babysit. We shape engagements around clarity: fixed scope when requirements are sharp, or a steady partnership when the roadmap is still unfolding.",
+      "Software should reduce friction, risk, and guesswork — not add another tool to manage. We shape every engagement around delivering that clarity.",
     items: [
       {
         title: "Operations you can rely on",
         description:
-          "Critical workflows run on one dependable system instead of spreadsheets and workarounds. Teams spend less time reconciling data and more time serving customers and making decisions.",
+          "Critical workflows run on one dependable system instead of a patchwork of spreadsheets and manual workarounds. Your teams stop reconciling data and start serving customers.",
       },
       {
         title: "A connected view of the business",
         description:
-          "Finance, sales, and operations draw from the same reality—so leaders act on current numbers, not stale exports. Modernization happens in measured steps, without freezing the business.",
+          "Finance, operations, and sales draw from the same source of truth. Leaders act on current numbers — not stale exports emailed out of three different tools at the end of the week.",
       },
       {
         title: "Room to grow without rework",
         description:
-          "Your platform keeps pace with regulation, volume, and new ideas—through planned releases and a team that already knows your context, not a fresh vendor every year.",
+          "Your platform evolves with regulation, volume, and new ideas — through planned releases with a team that already knows your context, not a fresh vendor starting from scratch every year.",
       },
     ],
   },
   why: {
     title: "Why Nedora",
     subtitle:
-      "Principles we apply on every engagement—focused on outcomes you can run in production.",
+      "Principles we apply on every engagement — focused on outcomes you can run in production.",
     items: [
       {
         title: "Built for production",
         description:
-          "Security, maintainability, and clear documentation are part of delivery—not extras you discover at handover.",
+          "Security hardening, integration resilience, and runbook documentation are part of every delivery — not premium add-ons. We treat your production environment with the seriousness it deserves.",
       },
       {
         title: "Transparent delivery",
         description:
-          "Milestones, regular demos, and honest scope conversations. You always know what's in flight and what's next.",
+          "Milestones agreed in writing. Live demos at every sprint. Scope changes documented and discussed — never hidden in a surprise invoice. You always know exactly where things stand.",
       },
       {
         title: "A partner, not a handoff",
         description:
-          "We work alongside your stakeholders and IT—from discovery through launch and the releases that follow.",
+          "We work alongside your stakeholders and IT from discovery through launch — and through the releases that follow. When requirements shift after go-live, you're talking to the engineers who built the system.",
       },
     ],
   },
   process: {
-    title: "How we work",
+    title: "Process",
     subtitle:
-      "Four phases from first conversation through launch—with clear milestones and shared documentation.",
+      "Four phases from first conversation through launch — with clear milestones and shared documentation at every step.",
     steps: [
       {
         title: "Discover",
+        tagline: "Align before we build",
         description:
-          "Align on goals, constraints, and success criteria before build starts.",
+          "We spend time understanding your workflows, constraints, and definition of success before a line of code is written. Problems solved here save weeks downstream.",
         points: [
           "Stakeholder interviews and workflow mapping",
           "Systems inventory, risks, and dependencies",
@@ -122,8 +141,9 @@ export const en = {
       },
       {
         title: "Design",
+        tagline: "A plan you can approve",
         description:
-          "A concrete plan you can take to stakeholders—not vague estimates.",
+          "Architecture decisions, integration design, and delivery model — documented in a written proposal your stakeholders can review, challenge, and sign off on. No verbal estimates.",
         points: [
           "Architecture, integrations, and delivery model",
           "Timeline, milestones, and written proposal",
@@ -131,17 +151,19 @@ export const en = {
       },
       {
         title: "Build",
+        tagline: "Deliver, test, repeat",
         description:
-          "Iterative delivery your team can test and approve along the way.",
+          "Short, predictable cycles. Your team sees and approves working software at every checkpoint — not six months in. Tests and documentation ship alongside each increment.",
         points: [
           "Short cycles with acceptance checkpoints",
           "Tests, documentation, and operable environments",
         ],
       },
       {
-        title: "Deliver & support",
+        title: "Deliver & Support",
+        tagline: "Go-live and beyond",
         description:
-          "Go-live and ongoing improvement with the same team that built it.",
+          "Cutover isn't the finish line. We stay engaged for knowledge transfer, stability monitoring, and the roadmap of what comes next.",
         points: [
           "Cutover support and knowledge transfer",
           "Runbooks and roadmap for what comes next",
@@ -150,26 +172,26 @@ export const en = {
     ],
   },
   engagement: {
-    title: "How we engage",
+    title: "Engagement models",
     subtitle:
       "Choose the model that matches your certainty of scope and how you want to work.",
     bridge:
-      "Many clients start time-based for discovery, then move to fixed-scope for build—or combine both on one program.",
+      "Many clients begin with a time-based discovery engagement to sharpen requirements — then move to a fixed-scope delivery for the build. We'll help you choose the structure that gives you the most confidence at each stage.",
     items: [
       {
         title: "Fixed-scope delivery",
         description:
-          "Defined outcomes, timeline, and investment upfront. Best when requirements are clear—or when you want a bounded MVP, integration, or migration.",
+          "Defined outcomes, timeline, and investment — upfront. Best when requirements are clear, or when you want a bounded MVP, a specific integration, or a clean migration. You know what success looks like; we commit to delivering it.",
         bullets: [
-          "Clear proposal and acceptance criteria",
-          "Milestone-based delivery and demos",
-          "Change control when scope evolves",
+          "Clear proposal with acceptance criteria",
+          "Milestone-based delivery and live demos",
+          "Formal change control when scope evolves",
         ],
       },
       {
         title: "Time-based engagement",
         description:
-          "Dedicated capacity by day or sprint—ideal for discovery, evolving backlogs, team augmentation, or ongoing product evolution.",
+          "Dedicated capacity by sprint — ideal for discovery, evolving backlogs, team augmentation, or long-term product evolution. You direct the work; we deliver it with full transparency.",
         bullets: [
           "Flexible priorities as you learn",
           "Transparent reporting on time and progress",
@@ -224,10 +246,9 @@ export const en = {
     ],
   },
   contact: {
-    eyebrow: "Get in touch",
     title: "Request an offer",
     subtitle:
-      "Tell us about your project. We typically respond within two business days.",
+      "Tell us about your project. We typically respond within two business days. For straightforward enquiries, we'll often suggest a 30-minute call to understand your context before preparing a written proposal.",
     name: "Full name",
     email: "Work email",
     company: "Company",
@@ -236,7 +257,8 @@ export const en = {
     message: "What do you need?",
     timeline: "Timeline",
     privacy:
-      "I agree that Nedora may process my data to respond to this request.",
+      "By submitting this form you agree that Nedora may process your data to respond to your enquiry.",
+    privacyLink: "Read our Privacy Policy.",
     submit: "Send request",
     submitting: "Sending…",
     successTitle: "Thank you",
@@ -246,7 +268,7 @@ export const en = {
       "Something went wrong. Please try again or email us directly.",
     projectTypes: {
       newApp: "New application",
-      integration: "Integration / modernization",
+      integration: "Integration / modernisation",
       support: "Support & evolution",
       unsure: "Not sure yet",
     },
@@ -256,10 +278,10 @@ export const en = {
       unsure: "Not sure — advise me",
     },
     timelineOptions: {
-      asap: "ASAP",
+      asap: "Ready to start now",
       oneToThree: "1–3 months",
       threeToSix: "3–6 months",
-      exploring: "Exploring options",
+      exploring: "Just exploring options",
     },
     validation: {
       name: "Please enter your name.",
@@ -273,14 +295,14 @@ export const en = {
   },
   footer: {
     description:
-      "Nedora designs and delivers enterprise-grade applications and integrations. We offer fixed-scope projects and time-based engagements for businesses that need software built with intent.",
+      "Nedora designs and delivers enterprise-grade applications and integrations for businesses that need software built with intent.",
     email: "hello@nedora.com",
     location: "Romania",
     privacy: "Privacy",
     terms: "Terms",
     contact: "Contact",
     rights: "All rights reserved.",
-    copyright: "© Copyright Nedora",
+    copyright: "© Nedora",
     social: {
       linkedin: "LinkedIn",
       x: "X",

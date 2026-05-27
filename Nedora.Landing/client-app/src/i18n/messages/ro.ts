@@ -2,9 +2,9 @@ import type { Messages } from "./en";
 
 export const ro: Messages = {
   meta: {
-    title: "Nedora — Dezvoltare software enterprise",
+    title: "Nedora — Software enterprise, construit cu intenție",
     description:
-      "Nedora construiește soluții software și integrări de nivel enterprise pentru companii. Proiecte cu scop fix și colaborări pe bază de timp.",
+      "Nedora proiectează și livrează aplicații și integrări critice pentru organizații care nu își permit presupuneri. Proiecte cu scop fix și colaborări pe bază de timp.",
   },
   nav: {
     solutions: "Soluții",
@@ -23,12 +23,12 @@ export const ro: Messages = {
     },
   },
   hero: {
-    eyebrow: "Software enterprise, construit cu grijă",
-    headline: "Software adaptat modului în care funcționează afacerea ta",
+    headline:
+      "Software enterprise, construit pentru modul în care funcționează cu adevărat afacerea ta.",
     subhead:
-      "Nedora proiectează și livrează aplicații și integrări de nivel enterprise. Oferim proiecte cu scop fix și colaborări pe bază de timp—predictibilitate, flexibilitate sau ambele.",
+      "Nedora proiectează și livrează aplicații și integrări critice pentru organizații care nu își permit presupuneri. Certitudine cu scop fix când cerințele sunt clare. Parteneriat flexibil când roadmap-ul încă se conturează.",
     primaryCta: "Solicită o ofertă",
-    secondaryCta: "Vezi proiectele",
+    secondaryCta: "Vezi cum lucrăm",
     scrollDownLabel: "Derulează la secțiunea următoare",
   },
   facts: {
@@ -37,86 +37,105 @@ export const ro: Messages = {
       {
         value: "10",
         suffix: "+",
-        label: "Ani de experiență",
+        label: "Ani în software enterprise",
       },
       {
-        value: "350",
-        suffix: "k+",
-        label: "Linii de cod scrise",
-      },
-      {
-        value: "25",
+        value: "40",
         suffix: "+",
-        label: "Clienți mulțumiți",
+        label: "Proiecte livrate",
+      },
+      {
+        value: "90",
+        suffix: "%",
+        label: "Rată de retenție a clienților",
       },
     ],
   },
   coreValues: {
     title: "La ce ne poți ține cont",
     subtitle:
-      "Software-ul enterprise funcționează doar când furnizorul e predictibil. Acestea sunt angajamentele noastre în fiecare proiect—de la discovery până la ani de rulare în producție.",
+      "Software-ul enterprise eșuează cel mai des nu din cauza codului prost, ci din cauza așteptărilor nealiniate, a furnizorilor care dispar și a angajamentelor pe care nimeni nu le-a scris. Iată cele șase lucruri pe care le garantăm în fiecare colaborare — de la primul apel până la ani de rulare în producție.",
     items: [
-      "Realitatea afacerii tale ghidează fiecare decizie",
-      "Construit pentru producție—nu pentru demo",
-      "Scope și progres pe care te poți baza",
-      "Viteză deliberată, fără compromisuri riscante",
-      "Parteneriat care continuă după go-live",
-      "Software pe care echipa ta îl poate deține și evolua",
+      {
+        title: "Realitatea ta ghidează fiecare decizie",
+        body: "Îți mapăm fluxurile înainte să deschidem un IDE. Software-ul care nu se potrivește modului în care lucrează echipele tale devine rapid un cost inutil.",
+      },
+      {
+        title: "Construit pentru producție — nu pentru demo",
+        body: "Securitatea, mentenabilitatea și documentația se livrează odată cu produsul. Nu într-un proiect ulterior, la șase luni după go-live.",
+      },
+      {
+        title: "Scope și progres pe care te poți baza",
+        body: "Milestone-urile sunt definite în scris și urmărite deschis. Știi mereu ce e agreat, ce e în lucru și ce urmează.",
+      },
+      {
+        title: "Viteză deliberată — niciodată imprudentă",
+        body: "Ne mișcăm cu urgență, dar nu cu prețul deciziilor de arhitectură de care depind următorii cinci ani. Datoria tehnică e o problemă de business.",
+      },
+      {
+        title: "Un parteneriat care continuă după go-live",
+        body: "Cerințele se schimbă după lansare — întotdeauna. Aceeași echipă care a construit sistemul e aici când ai nevoie să-l evoluezi.",
+      },
+      {
+        title: "Software pe care echipa ta îl poate deține",
+        body: "Fără lock-in, fără cutii negre. Inginerii tăi moștenesc cod curat, documentat, pe care îl pot înțelege, menține și extinde.",
+      },
     ],
   },
   solutions: {
     title: "Ce câștigă afacerea ta",
     subtitle:
-      "Software-ul ar trebui să reducă fricțiunea, riscul și incertitudinea—nu să adauge un alt tool de întreținut. Structurăm colaborarea pentru claritate: proiect cu scop fix când cerințele sunt mature, sau parteneriat continuu când drumul se conturează pe parcurs.",
+      "Software-ul ar trebui să reducă fricțiunea, riscul și incertitudinea — nu să adauge un alt tool de gestionat. Structurăm fiecare colaborare pentru a livra această claritate.",
     items: [
       {
         title: "Operațiuni în care poți avea încredere",
         description:
-          "Fluxurile critice rulează într-un singur sistem solid, nu în foi de calcul și improvizații. Echipele pierd mai puțin timp cu reconcilierea datelor și mai mult cu clienții și deciziile.",
+          "Fluxurile critice rulează într-un singur sistem solid, nu într-un mozaic de foi de calcul și improvizații manuale. Echipele tale încetează să reconcilieze date și încep să deservească clienții.",
       },
       {
         title: "O imagine conectată a afacerii",
         description:
-          "Finanțe, vânzări și operațiuni pornesc de la aceleași date—ca liderii să decidă pe cifre actuale, nu pe exporturi vechi. Modernizarea avansează treptat, fără să oprească businessul.",
+          "Finanțe, operațiuni și vânzări pornesc de la aceeași sursă de adevăr. Liderii decid pe cifre actuale — nu pe exporturi vechi trimise din trei tool-uri diferite la sfârșitul săptămânii.",
       },
       {
         title: "Spațiu de creștere fără reconstrucții",
         description:
-          "Platforma ține pasul cu reglementări, volum și idei noi—prin release-uri planificate și o echipă care îți cunoaște deja contextul, nu un vendor nou în fiecare an.",
+          "Platforma evoluează cu reglementări, volum și idei noi — prin release-uri planificate cu o echipă care îți cunoaște deja contextul, nu cu un vendor nou care începe de la zero în fiecare an.",
       },
     ],
   },
   why: {
     title: "De ce Nedora",
     subtitle:
-      "Principii pe care le aplicăm în fiecare colaborare—orientate spre rezultate în producție.",
+      "Principii pe care le aplicăm în fiecare colaborare — orientate spre rezultate pe care le poți rula în producție.",
     items: [
       {
         title: "Construit pentru producție",
         description:
-          "Securitatea, mentenabilitatea și documentația clară fac parte din livrare—nu apar doar la predare.",
+          "Securizarea, reziliența integrărilor și documentația de operare fac parte din fiecare livrare — nu sunt extra premium. Tratăm mediul tău de producție cu seriozitatea pe care o merită.",
       },
       {
         title: "Livrare transparentă",
         description:
-          "Milestone-uri, demo-uri regulate și conversații oneste despre scope. Știi mereu ce este în lucru și ce urmează.",
+          "Milestone-uri agreate în scris. Demo-uri live la fiecare sprint. Schimbările de scope documentate și discutate — niciodată ascunse într-o factură surpriză. Știi mereu exact unde stau lucrurile.",
       },
       {
         title: "Partener, nu predare și gata",
         description:
-          "Lucrăm alături de stakeholderi și IT—de la discovery până la lansare și release-urile care urmează.",
+          "Lucrăm alături de stakeholderi și IT de la discovery până la lansare — și prin release-urile care urmează. Când cerințele se schimbă după go-live, vorbești cu inginerii care au construit sistemul.",
       },
     ],
   },
   process: {
-    title: "Cum lucrăm",
+    title: "Proces",
     subtitle:
-      "Patru faze de la prima discuție la lansare—cu milestone-uri clare și documentație comună.",
+      "Patru faze de la prima conversație la lansare — cu milestone-uri clare și documentație comună la fiecare pas.",
     steps: [
       {
         title: "Discover",
+        tagline: "Aliniere înainte de build",
         description:
-          "Ne aliniem la obiective, constrângeri și criterii de succes înainte de build.",
+          "Înțelegem fluxurile, constrângerile și definiția succesului înainte de o linie de cod. Problemele rezolvate aici economisesc săptămâni mai târziu.",
         points: [
           "Interviuri cu stakeholderi și maparea fluxurilor",
           "Inventar sisteme, riscuri și dependențe",
@@ -124,8 +143,9 @@ export const ro: Messages = {
       },
       {
         title: "Design",
+        tagline: "Un plan pe care îl poți aproba",
         description:
-          "Un plan concret pentru stakeholderi—nu estimări vagi.",
+          "Decizii de arhitectură, design de integrare și model de livrare — documentate într-o propunere scrisă pe care stakeholderii o pot revizui, contesta și aproba. Fără estimări verbale.",
         points: [
           "Arhitectură, integrări și model de livrare",
           "Calendar, milestone-uri și propunere scrisă",
@@ -133,17 +153,19 @@ export const ro: Messages = {
       },
       {
         title: "Build",
+        tagline: "Livrează, testează, repetă",
         description:
-          "Livrare iterativă pe care echipa ta o poate testa și aproba.",
+          "Cicluri scurte și predictibile. Echipa ta vede și aprobă software funcțional la fiecare checkpoint — nu după șase luni. Testele și documentația se livrează cu fiecare increment.",
         points: [
           "Cicluri scurte cu puncte de acceptanță",
           "Teste, documentație și medii operabile",
         ],
       },
       {
-        title: "Deliver & support",
+        title: "Deliver & Support",
+        tagline: "Go-live și mai departe",
         description:
-          "Go-live și îmbunătățiri continue cu aceeași echipă.",
+          "Cutover-ul nu e linia de sosire. Rămânem implicați pentru transfer de cunoștințe, monitorizarea stabilității și roadmap-ul pentru ce urmează.",
         points: [
           "Suport la cutover și transfer de cunoștințe",
           "Runbook-uri și roadmap pentru ce urmează",
@@ -156,22 +178,22 @@ export const ro: Messages = {
     subtitle:
       "Alege modelul potrivit certitudinii scope-ului și modului în care vrei să lucrezi.",
     bridge:
-      "Mulți clienți încep pe bază de timp pentru discovery, apoi trec la scop fix pentru build—or combina ambele într-un singur program.",
+      "Mulți clienți încep cu o colaborare de discovery pe bază de timp pentru a clarifica cerințele — apoi trec la livrare cu scop fix pentru build. Te ajutăm să alegi structura care îți oferă cea mai multă încredere la fiecare etapă.",
     items: [
       {
         title: "Livrare cu scop fix",
         description:
-          "Rezultate, calendar și investiție definite din start. Potrivit când cerințele sunt suficient de clare—sau pentru MVP, integrare sau migrare cu limite clare.",
+          "Rezultate, calendar și investiție definite din start. Potrivit când cerințele sunt clare sau când vrei un MVP cu limite clare, o integrare specifică sau o migrare curată. Știi cum arată succesul; ne angajăm să-l livrăm.",
         bullets: [
-          "Propunere clară și criterii de acceptanță",
-          "Livrare pe milestone-uri și demo-uri",
-          "Control al schimbărilor când scope-ul evoluează",
+          "Propunere clară cu criterii de acceptanță",
+          "Livrare pe milestone-uri și demo-uri live",
+          "Control formal al schimbărilor când scope-ul evoluează",
         ],
       },
       {
         title: "Colaborare pe bază de timp",
         description:
-          "Capacitate dedicată pe zi sau sprint—ideal pentru discovery, backlog în evoluție, augmentare de echipă sau produs continuu.",
+          "Capacitate dedicată pe sprint — ideal pentru discovery, backlog în evoluție, augmentare de echipă sau evoluție de produs pe termen lung. Tu direcționezi munca; noi o livrăm cu transparență deplină.",
         bullets: [
           "Priorități flexibile pe măsură ce înveți",
           "Raportare transparentă a timpului și progresului",
@@ -226,10 +248,9 @@ export const ro: Messages = {
     ],
   },
   contact: {
-    eyebrow: "Contact",
     title: "Solicită o ofertă",
     subtitle:
-      "Spune-ne despre proiectul tău. De obicei răspundem în două zile lucrătoare.",
+      "Spune-ne despre proiectul tău. De obicei răspundem în două zile lucrătoare. Pentru solicitări simple, propunem adesea un apel de 30 de minute pentru a înțelege contextul înainte de o propunere scrisă.",
     name: "Nume complet",
     email: "Email de serviciu",
     company: "Companie",
@@ -238,7 +259,8 @@ export const ro: Messages = {
     message: "De ce ai nevoie?",
     timeline: "Termen",
     privacy:
-      "Sunt de acord ca Nedora să prelucreze datele mele pentru a răspunde acestei solicitări.",
+      "Prin trimiterea acestui formular ești de acord ca Nedora să prelucreze datele tale pentru a răspunde solicitării.",
+    privacyLink: "Citește Politica de confidențialitate.",
     submit: "Trimite solicitarea",
     submitting: "Se trimite…",
     successTitle: "Mulțumim",
@@ -250,7 +272,7 @@ export const ro: Messages = {
       newApp: "Aplicație nouă",
       integration: "Integrare / modernizare",
       support: "Suport și evoluție",
-      unsure: "Nu sunt sigur",
+      unsure: "Nu sunt sigur încă",
     },
     engagementOptions: {
       fixed: "Proiect cu scop fix",
@@ -258,10 +280,10 @@ export const ro: Messages = {
       unsure: "Nu sunt sigur — consiliați-mă",
     },
     timelineOptions: {
-      asap: "Cât mai curând",
+      asap: "Gata să începem acum",
       oneToThree: "1–3 luni",
       threeToSix: "3–6 luni",
-      exploring: "Explor opțiuni",
+      exploring: "Doar explorez opțiunile",
     },
     validation: {
       name: "Introdu numele tău.",
@@ -275,14 +297,14 @@ export const ro: Messages = {
   },
   footer: {
     description:
-      "Nedora proiectează și livrează aplicații și integrări enterprise. Oferim proiecte cu scop fix și colaborări pe bază de timp pentru companiile care au nevoie de software construit cu intenție.",
+      "Nedora proiectează și livrează aplicații și integrări enterprise pentru companiile care au nevoie de software construit cu intenție.",
     email: "hello@nedora.com",
     location: "România",
     privacy: "Confidențialitate",
     terms: "Termeni",
     contact: "Contact",
     rights: "Toate drepturile rezervate.",
-    copyright: "© Copyright Nedora",
+    copyright: "© Nedora",
     social: {
       linkedin: "LinkedIn",
       x: "X",

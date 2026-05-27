@@ -23,7 +23,7 @@ export function Section({
     <section
       ref={revealOnView ? ref : undefined}
       id={id}
-      className={`${revealOnView ? slideClass : ""} py-20 sm:py-24 ${muted ? "bg-neutral-50" : "bg-white"} ${className}`}
+      className={`${revealOnView ? slideClass : ""} py-10 sm:py-12 ${muted ? "bg-neutral-50" : "bg-white"} ${className}`}
     >
       {children}
     </section>

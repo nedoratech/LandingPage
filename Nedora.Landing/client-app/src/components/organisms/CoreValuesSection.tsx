@@ -46,15 +46,27 @@ export function CoreValuesSection() {
 
         <StaggeredReveal
           as="ul"
-          className="mx-auto grid w-full max-w-[44rem] list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2"
+          className="core-values__grid mx-auto grid w-full max-w-[44rem] list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2"
         >
-          {t.coreValues.items.map((label, index) => (
-            <StaggeredRevealItem key={label} as="li" index={index} className="min-w-0">
-              <div className="core-values__card flex items-center justify-between gap-2 rounded-2xl bg-[#f1f4f6] px-[22px] py-[12px]">
-                <p className="text-[1rem] font-normal leading-snug text-black">
-                  {label}
-                </p>
-                <ValueCheckIcon />
+          {t.coreValues.items.map((item, index) => (
+            <StaggeredRevealItem
+              key={item.title}
+              as="li"
+              index={index}
+              className="min-w-0"
+            >
+              <div className="landing-card core-values__card flex w-full gap-3 rounded-2xl bg-[#f1f4f6] px-[22px] py-4">
+                <div className="min-w-0 flex-1">
+                  <p className="text-[1rem] font-bold leading-snug text-black">
+                    {item.title}
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-neutral-600">
+                    {item.body}
+                  </p>
+                </div>
+                <div className="shrink-0 self-start pt-0.5">
+                  <ValueCheckIcon />
+                </div>
               </div>
             </StaggeredRevealItem>
           ))}
