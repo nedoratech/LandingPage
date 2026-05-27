@@ -9,6 +9,7 @@ import { SolutionsSection } from "@/components/organisms/SolutionsSection";
 import { WhyNedoraSection } from "@/components/organisms/WhyNedoraSection";
 import { ProcessSection } from "@/components/organisms/ProcessSection";
 import { EngagementSection } from "@/components/organisms/EngagementSection";
+import { DealSection } from "@/components/organisms/DealSection";
 import { ContactSection } from "@/components/organisms/ContactSection";
 import { SiteFooter } from "@/components/organisms/SiteFooter";
 import { ScrollSectionButton } from "@/components/molecules/ScrollSectionButton";
@@ -27,6 +28,7 @@ export function LandingPage() {
         <WhyNedoraSection />
         <ProcessSection />
         <EngagementSection />
+        <DealSection />
         <ContactSection />
       </main>
       <SiteFooter />

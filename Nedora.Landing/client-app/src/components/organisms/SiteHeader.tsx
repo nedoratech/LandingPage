@@ -128,19 +128,21 @@ export function SiteHeader({ overlay = false }: SiteHeaderProps) {
             className="pointer-events-none absolute inset-0 rounded-full bg-white/90 backdrop-blur-lg"
             aria-hidden
           />
-          <div className="relative z-10 flex w-full items-center justify-between gap-3 p-4 lg:gap-4 lg:px-5">
+          <div className="relative z-10 grid w-full grid-cols-[auto_1fr_auto] items-center gap-3 p-4 lg:gap-4 lg:px-5">
             <Logo priority className="h-6 w-auto shrink-0 sm:h-7" />
-            <div className="flex min-w-0 flex-1 items-center justify-end gap-2 nav-compact:flex-none lg:gap-3">
-              <nav
-                aria-label="Main"
-                className="flex flex-1 items-center justify-center gap-2 nav-compact:flex-none nav-compact:justify-start lg:gap-3"
-              >
-                {navItems.map(({ id, labelKey }) => (
-                  <NavHoverLink key={id} href={`#${id}`} variant="nav">
-                    {t.nav[labelKey]}
-                  </NavHoverLink>
-                ))}
-              </nav>
+
+            <nav
+              aria-label="Main"
+              className="flex min-w-0 items-center justify-center gap-2 lg:gap-3"
+            >
+              {navItems.map(({ id, labelKey }) => (
+                <NavHoverLink key={id} href={`#${id}`} variant="nav">
+                  {t.nav[labelKey]}
+                </NavHoverLink>
+              ))}
+            </nav>
+
+            <div className="flex justify-end">
               <NavHoverLink href={`#${SECTION_IDS.contact}`} variant="cta">
                 {t.nav.cta}
               </NavHoverLink>

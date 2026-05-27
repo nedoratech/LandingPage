@@ -10,7 +10,7 @@ export function ServiceCard({
   description: string;
 }) {
   return (
-    <Card>
+    <Card className="shadow-[0_0.25rem_1.25rem_0_rgb(0_0_0/0.06)]">
       <Heading level={3} className="mb-3">
         {title}
       </Heading>

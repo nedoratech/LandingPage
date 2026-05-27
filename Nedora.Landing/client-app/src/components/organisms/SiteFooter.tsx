@@ -68,7 +68,7 @@ export function SiteFooter() {
     { href: FOOTER_SOCIAL.linkedin, label: t.footer.social.linkedin, icon: <LinkedInIcon /> },
     { href: FOOTER_SOCIAL.x, label: t.footer.social.x, icon: <XIcon /> },
     { href: FOOTER_SOCIAL.github, label: t.footer.social.github, icon: <GitHubIcon /> },
-  ];
+  ].filter((item) => Boolean(item.href));
 
   return (
     <footer className="w-full bg-neutral-900 text-left lg:bg-white lg:py-16 xl:py-20">
@@ -134,8 +134,7 @@ export function SiteFooter() {
             <div className="flex flex-wrap items-center gap-4 sm:gap-6">
               <LangSwitch variant="footer" />
               <div className="flex items-center gap-3">
-              {socialLinks.map(({ href, label, icon }) =>
-                href ? (
+                {socialLinks.map(({ href, label, icon }) => (
                   <a
                     key={label}
                     href={href}
@@ -146,17 +145,7 @@ export function SiteFooter() {
                   >
                     <SocialIcon>{icon}</SocialIcon>
                   </a>
-                ) : (
-                  <span
-                    key={label}
-                    aria-label={label}
-                    className="opacity-60"
-                    title={label}
-                  >
-                    <SocialIcon>{icon}</SocialIcon>
-                  </span>
-                ),
-              )}
+                ))}
               </div>
             </div>
           </div>

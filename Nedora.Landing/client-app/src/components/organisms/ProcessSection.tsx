@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useCallback, useState } from "react";
 import {
   StaggeredReveal,
   StaggeredRevealItem,
@@ -14,6 +15,11 @@ function formatStep(index: number) {
 
 export function ProcessSection() {
   const { t } = useLocale();
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  const handleImageLoad = useCallback(() => {
+    setImageLoaded(true);
+  }, []);
 
   return (
     <section
@@ -22,12 +28,21 @@ export function ProcessSection() {
     >
       <div className="w-full px-6 lg:mx-auto lg:max-w-[90rem] lg:px-10 xl:max-w-[100rem] xl:px-12">
         <div className="relative isolate w-full overflow-hidden rounded-2xl">
-          <Image
-            src={WORK_IMAGE.src}
-            alt={WORK_IMAGE.alt}
-            fill
-            sizes="(min-width: 1280px) 90rem, 100vw"
-            className="object-cover object-center"
+          <div
+            className={`process-scroll__media ${imageLoaded ? "process-scroll__media--revealed" : ""}`}
+          >
+            <Image
+              src={WORK_IMAGE.src}
+              alt={WORK_IMAGE.alt}
+              fill
+              sizes="(min-width: 1280px) 90rem, 100vw"
+              className="object-cover object-center"
+              onLoad={handleImageLoad}
+            />
+          </div>
+          <div
+            className={`process-scroll__flash ${imageLoaded ? "process-scroll__flash--done" : ""}`}
+            aria-hidden
           />
 
           <div

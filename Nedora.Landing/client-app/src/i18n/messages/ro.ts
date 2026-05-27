@@ -247,6 +247,22 @@ export const ro: Messages = {
       },
     ],
   },
+  deal: {
+    eyebrow: "Următorul pas",
+    title: "Hai să facem ceva grozav împreună.",
+    subtitle:
+      "Fie că explorezi opțiunile sau știi deja ce ai nevoie, te ajutăm să transformi ideea într-un plan pe care stakeholderii îl pot aproba.",
+    cardTitle: "Un drum clar către ofertă",
+    cardSubtitle:
+      "Spune-ne esențialul și revenim cu o propunere scrisă — scope, milestone-uri și o investiție pe care o poți planifica.",
+    points: [
+      "Un apel scurt pentru context (când ajută)",
+      "Scope scris și criterii de acceptanță",
+      "Pași următori transparenți și termene",
+    ],
+    cta: "Solicită o ofertă",
+    secondaryCta: "Vezi cum lucrăm",
+  },
   contact: {
     title: "Solicită o ofertă",
     subtitle:
@@ -299,7 +315,7 @@ export const ro: Messages = {
     description:
       "Nedora proiectează și livrează aplicații și integrări enterprise pentru companiile care au nevoie de software construit cu intenție.",
     email: "hello@nedora.com",
-    location: "România",
+    location: "București, România",
     privacy: "Confidențialitate",
     terms: "Termeni",
     contact: "Contact",

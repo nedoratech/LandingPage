@@ -426,6 +426,31 @@ a.text-link:focus-visible::after {
   opacity: 0;
 }
 
+.process-scroll__media {
+  position: absolute;
+  inset: 0;
+  transform: scale(1.14);
+  will-change: transform;
+}
+
+.process-scroll__media--revealed {
+  animation: hero-image-zoom-out 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.process-scroll__flash {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: #fff;
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 0.55s ease-out;
+}
+
+.process-scroll__flash--done {
+  opacity: 0;
+}
+
 .hero-scroll__reveal {
   height: min(42vh, 24rem);
 }
@@ -527,11 +552,23 @@ a.text-link:focus-visible::after {
     transform: none;
   }
 
+  .process-scroll__media {
+    transform: none;
+  }
+
   .hero-scroll__media--revealed {
     animation: none;
   }
 
+  .process-scroll__media--revealed {
+    animation: none;
+  }
+
   .hero-scroll__flash {
+    transition-duration: 0.15s;
+  }
+
+  .process-scroll__flash {
     transition-duration: 0.15s;
   }
 

@@ -13,7 +13,7 @@ export const BRAND_LOGO_WHITE = {
 
 /** Footer social profile URLs — leave empty to hide a link */
 export const FOOTER_SOCIAL = {
-  linkedin: "",
+  linkedin: "https://linkedin.com/company/nedora-tech",
   x: "",
   github: "",
 } as const;

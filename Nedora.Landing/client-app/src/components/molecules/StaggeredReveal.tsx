@@ -37,7 +37,10 @@ export function StaggeredReveal({
   if (as === "ul") {
     return (
       <StaggeredRevealContext.Provider value={value}>
-        <ul ref={ref} className={className}>
+        <ul
+          ref={ref as unknown as React.RefObject<HTMLUListElement>}
+          className={className}
+        >
           {children}
         </ul>
       </StaggeredRevealContext.Provider>
@@ -47,7 +50,10 @@ export function StaggeredReveal({
   if (as === "ol") {
     return (
       <StaggeredRevealContext.Provider value={value}>
-        <ol ref={ref} className={className}>
+        <ol
+          ref={ref as unknown as React.RefObject<HTMLOListElement>}
+          className={className}
+        >
           {children}
         </ol>
       </StaggeredRevealContext.Provider>
@@ -56,7 +62,7 @@ export function StaggeredReveal({
 
   return (
     <StaggeredRevealContext.Provider value={value}>
-      <div ref={ref} className={className}>
+      <div ref={ref as unknown as React.RefObject<HTMLDivElement>} className={className}>
         {children}
       </div>
     </StaggeredRevealContext.Provider>

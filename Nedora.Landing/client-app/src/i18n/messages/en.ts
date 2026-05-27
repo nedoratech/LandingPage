@@ -245,6 +245,22 @@ export const en = {
       },
     ],
   },
+  deal: {
+    eyebrow: "Next step",
+    title: "Let’s make something great together.",
+    subtitle:
+      "If you’re exploring what’s possible—or already know what you need—we’ll help you turn it into a plan your stakeholders can sign off on.",
+    cardTitle: "A clear path to an offer",
+    cardSubtitle:
+      "Share the essentials and we’ll come back with a written proposal—scope, milestones, and an investment you can plan around.",
+    points: [
+      "A short call for context (when it helps)",
+      "Written scope and acceptance criteria",
+      "Transparent next steps and timelines",
+    ],
+    cta: "Request an offer",
+    secondaryCta: "See how we work",
+  },
   contact: {
     title: "Request an offer",
     subtitle:
@@ -297,7 +313,7 @@ export const en = {
     description:
       "Nedora designs and delivers enterprise-grade applications and integrations for businesses that need software built with intent.",
     email: "hello@nedora.com",
-    location: "Romania",
+    location: "Bucharest, Romania",
     privacy: "Privacy",
     terms: "Terms",
     contact: "Contact",
