@@ -3,6 +3,7 @@
 import { Logo } from "@/components/atoms/Logo";
 import { NavHoverLink } from "@/components/molecules/NavHoverLink";
 import { SECTION_IDS } from "@/lib/constants";
+import { contactFormHash } from "@/lib/contactNavigation";
 import { useLocale } from "@/providers/LocaleProvider";
 import type { Messages } from "@/i18n/messages";
 
@@ -14,10 +15,11 @@ const mobileMenuLink =
 const mobileMenuLinkCta = `${mobileMenuLink} bg-neutral-200`;
 
 const navItems = [
-  { id: SECTION_IDS.solutions, labelKey: "solutions" as const },
-  { id: SECTION_IDS.why, labelKey: "why" as const },
-  { id: SECTION_IDS.process, labelKey: "process" as const },
-  { id: SECTION_IDS.engagement, labelKey: "engagement" as const },
+  { href: `#${SECTION_IDS.solutions}`, labelKey: "solutions" as const },
+  { href: `#${SECTION_IDS.why}`, labelKey: "why" as const },
+  { href: `#${SECTION_IDS.process}`, labelKey: "process" as const },
+  { href: `#${SECTION_IDS.engagement}`, labelKey: "engagement" as const },
+  { href: contactFormHash("contact"), labelKey: "contact" as const },
 ] as const;
 
 function MenuIcon() {
@@ -40,10 +42,10 @@ function closeMobileMenu() {
 function MobileMenuLinks({ t }: { t: Messages }) {
   return (
     <>
-      {navItems.map(({ id, labelKey }) => (
+      {navItems.map(({ href, labelKey }) => (
         <a
-          key={id}
-          href={`#${id}`}
+          key={href}
+          href={href}
           className={mobileMenuLink}
           onClick={closeMobileMenu}
         >
@@ -51,7 +53,7 @@ function MobileMenuLinks({ t }: { t: Messages }) {
         </a>
       ))}
       <a
-        href={`#${SECTION_IDS.contact}`}
+        href={contactFormHash("quote")}
         className={mobileMenuLinkCta}
         onClick={closeMobileMenu}
       >
@@ -135,15 +137,15 @@ export function SiteHeader({ overlay = false }: SiteHeaderProps) {
               aria-label="Main"
               className="flex min-w-0 items-center justify-center gap-2 lg:gap-3"
             >
-              {navItems.map(({ id, labelKey }) => (
-                <NavHoverLink key={id} href={`#${id}`} variant="nav">
+              {navItems.map(({ href, labelKey }) => (
+                <NavHoverLink key={href} href={href} variant="nav">
                   {t.nav[labelKey]}
                 </NavHoverLink>
               ))}
             </nav>
 
             <div className="flex justify-end">
-              <NavHoverLink href={`#${SECTION_IDS.contact}`} variant="cta">
+              <NavHoverLink href={contactFormHash("quote")} variant="cta">
                 {t.nav.cta}
               </NavHoverLink>
             </div>

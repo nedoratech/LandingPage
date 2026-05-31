@@ -6,6 +6,7 @@ import { Button } from "@/components/atoms/Button";
 import { Heading } from "@/components/atoms/Heading";
 import { Container } from "@/components/templates/LandingTemplate";
 import { HERO_IMAGE, SECTION_IDS } from "@/lib/constants";
+import { contactFormHash } from "@/lib/contactNavigation";
 import { useLocale } from "@/providers/LocaleProvider";
 
 export function HeroSection() {
@@ -57,7 +58,7 @@ export function HeroSection() {
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
-              <Button href={`#${SECTION_IDS.contact}`} variant="cta">
+              <Button href={contactFormHash("quote")} variant="cta">
                 {t.hero.primaryCta}
               </Button>
               <Button href={`#${SECTION_IDS.process}`} variant="heroPrimary">

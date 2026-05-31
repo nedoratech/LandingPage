@@ -264,6 +264,7 @@ export const ro: Messages = {
     secondaryCta: "Vezi cum lucrăm",
   },
   contact: {
+    formTypeLabel: "Tip formular",
     formTypes: {
       quote: "Solicitare ofertă",
       contact: "Contact",

@@ -3,6 +3,7 @@
 import { Logo } from "@/components/atoms/Logo";
 import { LangSwitch } from "@/components/molecules/LangSwitch";
 import { FOOTER_SOCIAL, SECTION_IDS } from "@/lib/constants";
+import { contactFormHash } from "@/lib/contactNavigation";
 import { useLocale } from "@/providers/LocaleProvider";
 
 const primarySections = [
@@ -101,7 +102,7 @@ export function SiteFooter() {
               <ul className="flex flex-col gap-3">
                 <li>
                   <FooterLink
-                    href={`#${SECTION_IDS.contact}`}
+                    href={contactFormHash("contact")}
                     className="text-base text-white"
                   >
                     {t.footer.contact}

@@ -5,6 +5,7 @@ import { Section } from "@/components/atoms/Section";
 import { Button } from "@/components/atoms/Button";
 import { Container } from "@/components/templates/LandingTemplate";
 import { SECTION_IDS } from "@/lib/constants";
+import { contactFormHash } from "@/lib/contactNavigation";
 import { useLocale } from "@/providers/LocaleProvider";
 
 export function DealSection() {
@@ -62,7 +63,7 @@ export function DealSection() {
             </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button href={`#${SECTION_IDS.contact}`} variant="cta">
+              <Button href={contactFormHash("quote")} variant="cta">
                 {t.deal.cta}
               </Button>
               <Button href={`#${SECTION_IDS.process}`} variant="heroPrimary">

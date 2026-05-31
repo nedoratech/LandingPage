@@ -262,6 +262,7 @@ export const en = {
     secondaryCta: "See how we work",
   },
   contact: {
+    formTypeLabel: "Form type",
     formTypes: {
       quote: "Quote request",
       contact: "Contact",

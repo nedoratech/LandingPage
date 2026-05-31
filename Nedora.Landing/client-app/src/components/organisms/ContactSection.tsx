@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "@/components/atoms/Button";
 import { Icon } from "@/components/atoms/Icon";
@@ -11,13 +11,21 @@ import { Text } from "@/components/atoms/Text";
 import { ContactIconField } from "@/components/molecules/ContactIconField";
 import { ContactSelectField } from "@/components/molecules/ContactSelectField";
 import { SECTION_IDS } from "@/lib/constants";
+import {
+  contactFormHash,
+  parseContactFormHash,
+  scrollToContactSection,
+  type ContactFormType,
+} from "@/lib/contactNavigation";
 import { contactFieldIcons } from "@/lib/icons";
 import { contactSchema } from "@/lib/validation/contact";
 import { useLocale } from "@/providers/LocaleProvider";
 
-type FormType = "quote" | "contact";
 type FormState = "idle" | "submitting" | "success" | "error";
 type FieldErrors = Partial<Record<string, string>>;
+
+const formTypeSelectClass =
+  "w-full appearance-none rounded-xl border-0 bg-white px-4 py-3.5 text-base text-black shadow-none focus:outline-none focus:ring-2 focus:ring-primary-blue/30 sm:max-w-xs";
 
 const textareaClass =
   "min-h-[8.5rem] resize-y border-0 bg-white px-4 py-3.5 text-base shadow-none rounded-xl focus:border-transparent focus:ring-2 focus:ring-primary-blue/30";
@@ -35,60 +43,64 @@ function ContactCard({ children }: { children: ReactNode }) {
 function FormTypeSelector({
   value,
   onChange,
+  label,
   quoteLabel,
   contactLabel,
 }: {
-  value: FormType;
-  onChange: (next: FormType) => void;
+  value: ContactFormType;
+  onChange: (next: ContactFormType) => void;
+  label: string;
   quoteLabel: string;
   contactLabel: string;
 }) {
-  const options: { id: FormType; label: string }[] = [
-    { id: "quote", label: quoteLabel },
-    { id: "contact", label: contactLabel },
-  ];
-
   return (
-    <div
-      role="tablist"
-      aria-label="Form type"
-      className="inline-flex w-full rounded-xl bg-white p-1 sm:w-auto"
-    >
-      {options.map((option) => {
-        const selected = value === option.id;
-        return (
-          <button
-            key={option.id}
-            type="button"
-            role="tab"
-            aria-selected={selected}
-            onClick={() => onChange(option.id)}
-            className={`flex-1 rounded-lg px-4 py-2.5 text-sm font-medium transition-colors sm:flex-none sm:px-6 ${
-              selected
-                ? "bg-primary-blue text-white shadow-sm"
-                : "text-neutral-600 hover:text-black"
-            }`}
-          >
-            {option.label}
-          </button>
-        );
-      })}
+    <div>
+      <label htmlFor="formType" className="sr-only">
+        {label}
+      </label>
+      <select
+        id="formType"
+        name="formType"
+        value={value}
+        onChange={(event) => onChange(event.target.value as ContactFormType)}
+        className={formTypeSelectClass}
+      >
+        <option value="quote">{quoteLabel}</option>
+        <option value="contact">{contactLabel}</option>
+      </select>
     </div>
   );
 }
 
 export function ContactSection() {
   const { t, locale } = useLocale();
-  const [formType, setFormType] = useState<FormType>("quote");
+  const [formType, setFormType] = useState<ContactFormType>("quote");
   const [state, setState] = useState<FormState>("idle");
   const [errors, setErrors] = useState<FieldErrors>({});
 
   const copy = t.contact.forms[formType];
 
-  function handleFormTypeChange(next: FormType) {
+  useEffect(() => {
+    function syncFromHash() {
+      const parsed = parseContactFormHash(window.location.hash);
+      if (!parsed) return;
+
+      setFormType(parsed);
+      setErrors({});
+      setState("idle");
+      scrollToContactSection();
+    }
+
+    syncFromHash();
+    window.addEventListener("hashchange", syncFromHash);
+    return () => window.removeEventListener("hashchange", syncFromHash);
+  }, []);
+
+  function handleFormTypeChange(next: ContactFormType) {
     setFormType(next);
     setErrors({});
     setState("idle");
+    history.replaceState(null, "", contactFormHash(next));
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -212,6 +224,7 @@ export function ContactSection() {
           <FormTypeSelector
             value={formType}
             onChange={handleFormTypeChange}
+            label={t.contact.formTypeLabel}
             quoteLabel={t.contact.formTypes.quote}
             contactLabel={t.contact.formTypes.contact}
           />
