@@ -1,0 +1,21 @@
+# Nedora Landing — Supabase project config.
+# GitHub integration applies files in supabase/migrations/ on push to the linked branch.
+# In Supabase Dashboard → Integrations → GitHub, set the project directory to: Nedora.Landing
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+shadow_port = 54320
+major_version = 15
+
+[db.migrations]
+enabled = true
+
+[db.seed]
+enabled = false
