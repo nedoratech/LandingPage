@@ -108,14 +108,6 @@ export function SiteFooter() {
                   </FooterLink>
                 </li>
                 <li>
-                  <FooterLink
-                    href={`mailto:${t.footer.email}`}
-                    className="text-base text-white"
-                  >
-                    {t.footer.email}
-                  </FooterLink>
-                </li>
-                <li>
                   <FooterLink href="/privacy" className="text-base text-white">
                     {t.footer.privacy}
                   </FooterLink>

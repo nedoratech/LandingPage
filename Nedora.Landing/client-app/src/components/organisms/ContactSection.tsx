@@ -15,8 +15,8 @@ import { contactFieldIcons } from "@/lib/icons";
 import { contactSchema } from "@/lib/validation/contact";
 import { useLocale } from "@/providers/LocaleProvider";
 
+type FormType = "quote" | "contact";
 type FormState = "idle" | "submitting" | "success" | "error";
-
 type FieldErrors = Partial<Record<string, string>>;
 
 const textareaClass =
@@ -32,10 +32,64 @@ function ContactCard({ children }: { children: ReactNode }) {
   );
 }
 
+function FormTypeSelector({
+  value,
+  onChange,
+  quoteLabel,
+  contactLabel,
+}: {
+  value: FormType;
+  onChange: (next: FormType) => void;
+  quoteLabel: string;
+  contactLabel: string;
+}) {
+  const options: { id: FormType; label: string }[] = [
+    { id: "quote", label: quoteLabel },
+    { id: "contact", label: contactLabel },
+  ];
+
+  return (
+    <div
+      role="tablist"
+      aria-label="Form type"
+      className="inline-flex w-full rounded-xl bg-white p-1 sm:w-auto"
+    >
+      {options.map((option) => {
+        const selected = value === option.id;
+        return (
+          <button
+            key={option.id}
+            type="button"
+            role="tab"
+            aria-selected={selected}
+            onClick={() => onChange(option.id)}
+            className={`flex-1 rounded-lg px-4 py-2.5 text-sm font-medium transition-colors sm:flex-none sm:px-6 ${
+              selected
+                ? "bg-primary-blue text-white shadow-sm"
+                : "text-neutral-600 hover:text-black"
+            }`}
+          >
+            {option.label}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 export function ContactSection() {
   const { t, locale } = useLocale();
+  const [formType, setFormType] = useState<FormType>("quote");
   const [state, setState] = useState<FormState>("idle");
   const [errors, setErrors] = useState<FieldErrors>({});
+
+  const copy = t.contact.forms[formType];
+
+  function handleFormTypeChange(next: FormType) {
+    setFormType(next);
+    setErrors({});
+    setState("idle");
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -43,17 +97,30 @@ export function ContactSection() {
     setState("submitting");
 
     const formData = new FormData(event.currentTarget);
-    const payload = {
-      name: String(formData.get("name") ?? ""),
-      email: String(formData.get("email") ?? ""),
-      company: String(formData.get("company") ?? ""),
-      projectType: String(formData.get("projectType") ?? ""),
-      engagement: String(formData.get("engagement") ?? ""),
-      message: String(formData.get("message") ?? ""),
-      timeline: String(formData.get("timeline") ?? "") || undefined,
-      privacy: formData.get("privacy") === "on",
-      website: String(formData.get("website") ?? ""),
-    };
+    const payload =
+      formType === "quote"
+        ? {
+            formType: "quote" as const,
+            name: String(formData.get("name") ?? ""),
+            email: String(formData.get("email") ?? ""),
+            company: String(formData.get("company") ?? ""),
+            projectType: String(formData.get("projectType") ?? ""),
+            engagement: String(formData.get("engagement") ?? ""),
+            message: String(formData.get("message") ?? ""),
+            timeline: String(formData.get("timeline") ?? "") || undefined,
+            privacy: formData.get("privacy") === "on",
+            website: String(formData.get("website") ?? ""),
+          }
+        : {
+            formType: "contact" as const,
+            firstName: String(formData.get("firstName") ?? ""),
+            lastName: String(formData.get("lastName") ?? ""),
+            email: String(formData.get("email") ?? ""),
+            subject: String(formData.get("subject") ?? ""),
+            message: String(formData.get("message") ?? ""),
+            privacy: formData.get("privacy") === "on",
+            website: String(formData.get("website") ?? ""),
+          };
 
     const result = contactSchema.safeParse(payload);
     if (!result.success) {
@@ -74,20 +141,36 @@ export function ContactSection() {
     const endpoint =
       process.env.NEXT_PUBLIC_CONTACT_ENDPOINT ?? "/api/contact";
 
+    const apiBody =
+      result.data.formType === "quote"
+        ? {
+            formType: result.data.formType,
+            name: result.data.name,
+            email: result.data.email,
+            company: result.data.company,
+            projectType: result.data.projectType,
+            engagement: result.data.engagement,
+            message: result.data.message,
+            timeline: result.data.timeline,
+            locale,
+            website: result.data.website,
+          }
+        : {
+            formType: result.data.formType,
+            firstName: result.data.firstName,
+            lastName: result.data.lastName,
+            email: result.data.email,
+            subject: result.data.subject,
+            message: result.data.message,
+            locale,
+            website: result.data.website,
+          };
+
     try {
       const response = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: result.data.name,
-          email: result.data.email,
-          company: result.data.company,
-          projectType: result.data.projectType,
-          engagement: result.data.engagement,
-          message: result.data.message,
-          timeline: result.data.timeline,
-          locale,
-        }),
+        body: JSON.stringify(apiBody),
       });
 
       if (!response.ok) {
@@ -126,14 +209,22 @@ export function ContactSection() {
     <Section id={SECTION_IDS.contact} className="!bg-white py-8 sm:py-10" revealOnView={false}>
       <ContactCard>
         <div className="mx-auto w-full max-w-xl sm:max-w-2xl">
-          <h2 className="text-3xl font-bold tracking-normal text-black sm:text-4xl">
-            {t.contact.title}
+          <FormTypeSelector
+            value={formType}
+            onChange={handleFormTypeChange}
+            quoteLabel={t.contact.formTypes.quote}
+            contactLabel={t.contact.formTypes.contact}
+          />
+
+          <h2 className="mt-8 text-3xl font-bold tracking-normal text-black sm:text-4xl">
+            {copy.title}
           </h2>
           <p className="mt-4 text-base leading-relaxed text-neutral-600">
-            {t.contact.subtitle}
+            {copy.subtitle}
           </p>
 
           <form
+            key={formType}
             onSubmit={handleSubmit}
             className="mt-10 space-y-4"
             noValidate
@@ -147,103 +238,168 @@ export function ContactSection() {
               aria-hidden
             />
 
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <ContactIconField
-                id="name"
-                name="name"
-                icon={contactFieldIcons.name}
-                placeholder={t.contact.name}
-                autoComplete="name"
-                required
-                error={errors.name}
-              />
-              <ContactIconField
-                id="email"
-                name="email"
-                type="email"
-                icon={contactFieldIcons.email}
-                placeholder={t.contact.email}
-                autoComplete="email"
-                required
-                error={errors.email}
-              />
-            </div>
+            {formType === "quote" ? (
+              <>
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <ContactIconField
+                    id="name"
+                    name="name"
+                    icon={contactFieldIcons.name}
+                    placeholder={t.contact.name}
+                    autoComplete="name"
+                    required
+                    error={errors.name}
+                  />
+                  <ContactIconField
+                    id="email"
+                    name="email"
+                    type="email"
+                    icon={contactFieldIcons.email}
+                    placeholder={t.contact.email}
+                    autoComplete="email"
+                    required
+                    error={errors.email}
+                  />
+                </div>
 
-            <ContactIconField
-              id="company"
-              name="company"
-              icon={contactFieldIcons.company}
-              placeholder={t.contact.company}
-              autoComplete="organization"
-              required
-              error={errors.company}
-            />
+                <ContactIconField
+                  id="company"
+                  name="company"
+                  icon={contactFieldIcons.company}
+                  placeholder={t.contact.company}
+                  autoComplete="organization"
+                  required
+                  error={errors.company}
+                />
 
-            <ContactSelectField
-              id="projectType"
-              name="projectType"
-              required
-              defaultValue=""
-              placeholder={t.contact.projectType}
-              error={errors.projectType}
-            >
-              <option value="newApp">{t.contact.projectTypes.newApp}</option>
-              <option value="integration">
-                {t.contact.projectTypes.integration}
-              </option>
-              <option value="support">{t.contact.projectTypes.support}</option>
-              <option value="unsure">{t.contact.projectTypes.unsure}</option>
-            </ContactSelectField>
+                <ContactSelectField
+                  id="projectType"
+                  name="projectType"
+                  required
+                  defaultValue=""
+                  placeholder={t.contact.projectType}
+                  error={errors.projectType}
+                >
+                  <option value="newApp">{t.contact.projectTypes.newApp}</option>
+                  <option value="integration">
+                    {t.contact.projectTypes.integration}
+                  </option>
+                  <option value="support">{t.contact.projectTypes.support}</option>
+                  <option value="unsure">{t.contact.projectTypes.unsure}</option>
+                </ContactSelectField>
 
-            <ContactSelectField
-              id="engagement"
-              name="engagement"
-              required
-              defaultValue=""
-              placeholder={t.contact.engagement}
-              error={errors.engagement}
-            >
-              <option value="fixed">{t.contact.engagementOptions.fixed}</option>
-              <option value="time">{t.contact.engagementOptions.time}</option>
-              <option value="unsure">{t.contact.engagementOptions.unsure}</option>
-            </ContactSelectField>
+                <ContactSelectField
+                  id="engagement"
+                  name="engagement"
+                  required
+                  defaultValue=""
+                  placeholder={t.contact.engagement}
+                  error={errors.engagement}
+                >
+                  <option value="fixed">{t.contact.engagementOptions.fixed}</option>
+                  <option value="time">{t.contact.engagementOptions.time}</option>
+                  <option value="unsure">{t.contact.engagementOptions.unsure}</option>
+                </ContactSelectField>
 
-            <div>
-              <Textarea
-                id="message"
-                name="message"
-                rows={5}
-                required
-                placeholder={t.contact.message}
-                aria-invalid={errors.message ? true : undefined}
-                aria-describedby={errors.message ? "message-error" : undefined}
-                className={textareaClass}
-              />
-              {errors.message ? (
-                <p id="message-error" className="mt-1.5 text-sm text-red-600">
-                  {errors.message}
-                </p>
-              ) : null}
-            </div>
+                <div>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    required
+                    placeholder={t.contact.message}
+                    aria-invalid={errors.message ? true : undefined}
+                    aria-describedby={errors.message ? "message-error" : undefined}
+                    className={textareaClass}
+                  />
+                  {errors.message ? (
+                    <p id="message-error" className="mt-1.5 text-sm text-red-600">
+                      {errors.message}
+                    </p>
+                  ) : null}
+                </div>
 
-            <ContactSelectField
-              id="timeline"
-              name="timeline"
-              optional
-              defaultValue=""
-              placeholder={t.contact.timeline}
-            >
-              <option value="asap">{t.contact.timelineOptions.asap}</option>
-              <option value="oneToThree">
-                {t.contact.timelineOptions.oneToThree}
-              </option>
-              <option value="threeToSix">
-                {t.contact.timelineOptions.threeToSix}
-              </option>
-              <option value="exploring">
-                {t.contact.timelineOptions.exploring}
-              </option>
-            </ContactSelectField>
+                <ContactSelectField
+                  id="timeline"
+                  name="timeline"
+                  optional
+                  defaultValue=""
+                  placeholder={t.contact.timeline}
+                >
+                  <option value="asap">{t.contact.timelineOptions.asap}</option>
+                  <option value="oneToThree">
+                    {t.contact.timelineOptions.oneToThree}
+                  </option>
+                  <option value="threeToSix">
+                    {t.contact.timelineOptions.threeToSix}
+                  </option>
+                  <option value="exploring">
+                    {t.contact.timelineOptions.exploring}
+                  </option>
+                </ContactSelectField>
+              </>
+            ) : (
+              <>
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <ContactIconField
+                    id="firstName"
+                    name="firstName"
+                    icon={contactFieldIcons.firstName}
+                    placeholder={t.contact.firstName}
+                    autoComplete="given-name"
+                    required
+                    error={errors.firstName}
+                  />
+                  <ContactIconField
+                    id="lastName"
+                    name="lastName"
+                    icon={contactFieldIcons.lastName}
+                    placeholder={t.contact.lastName}
+                    autoComplete="family-name"
+                    required
+                    error={errors.lastName}
+                  />
+                </div>
+
+                <ContactIconField
+                  id="email"
+                  name="email"
+                  type="email"
+                  icon={contactFieldIcons.email}
+                  placeholder={t.contact.emailContact}
+                  autoComplete="email"
+                  required
+                  error={errors.email}
+                />
+
+                <ContactIconField
+                  id="subject"
+                  name="subject"
+                  icon={contactFieldIcons.subject}
+                  placeholder={t.contact.subject}
+                  required
+                  error={errors.subject}
+                />
+
+                <div>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    required
+                    placeholder={t.contact.messageContact}
+                    aria-invalid={errors.message ? true : undefined}
+                    aria-describedby={errors.message ? "message-error" : undefined}
+                    className={textareaClass}
+                  />
+                  {errors.message ? (
+                    <p id="message-error" className="mt-1.5 text-sm text-red-600">
+                      {errors.message}
+                    </p>
+                  ) : null}
+                </div>
+              </>
+            )}
 
             <div className="flex items-start gap-2.5 pt-2">
               <input
@@ -273,7 +429,7 @@ export function ContactSection() {
               className="w-full sm:w-auto"
               disabled={state === "submitting"}
             >
-              {state === "submitting" ? t.contact.submitting : t.contact.submit}
+              {state === "submitting" ? t.contact.submitting : copy.submit}
             </Button>
           </form>
         </div>

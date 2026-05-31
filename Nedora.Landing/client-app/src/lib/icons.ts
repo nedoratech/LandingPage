@@ -8,6 +8,7 @@ import {
   faPenRuler,
   faRocket,
   faShieldHalved,
+  faTag,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
@@ -27,6 +28,9 @@ export const processStepIcons: IconDefinition[] = [
 
 export const contactFieldIcons = {
   name: faUser,
+  firstName: faUser,
+  lastName: faUser,
   email: faEnvelope,
   company: faBuilding,
+  subject: faTag,
 } as const;

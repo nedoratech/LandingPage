@@ -262,26 +262,45 @@ export const en = {
     secondaryCta: "See how we work",
   },
   contact: {
-    title: "Request an offer",
-    subtitle:
-      "Tell us about your project. We typically respond within two business days. For straightforward enquiries, we'll often suggest a 30-minute call to understand your context before preparing a written proposal.",
+    formTypes: {
+      quote: "Quote request",
+      contact: "Contact",
+    },
+    forms: {
+      quote: {
+        title: "Request an offer",
+        subtitle:
+          "Tell us about your project. We typically respond within two business days. For straightforward enquiries, we'll often suggest a 30-minute call to understand your context before preparing a written proposal.",
+        submit: "Send request",
+      },
+      contact: {
+        title: "Get in touch",
+        subtitle:
+          "Have a question or need to reach us? Send a message and we'll respond within two business days.",
+        submit: "Send message",
+      },
+    },
     name: "Full name",
+    firstName: "First name",
+    lastName: "Last name",
     email: "Work email",
+    emailContact: "Email",
     company: "Company",
     projectType: "Project type",
     engagement: "Engagement preference",
-    message: "What do you need?",
+    message: "Describe your project",
+    messageContact: "Your message",
+    subject: "Subject",
     timeline: "Timeline",
     privacy:
       "By submitting this form you agree that Nedora may process your data to respond to your enquiry.",
     privacyLink: "Read our Privacy Policy.",
-    submit: "Send request",
     submitting: "Sending…",
     successTitle: "Thank you",
     successMessage:
       "We've received your request and will be in touch shortly.",
     errorMessage:
-      "Something went wrong. Please try again or email us directly.",
+      "Something went wrong. Please try again.",
     projectTypes: {
       newApp: "New application",
       integration: "Integration / modernisation",
@@ -301,10 +320,13 @@ export const en = {
     },
     validation: {
       name: "Please enter your name.",
-      email: "Please enter a valid work email.",
+      firstName: "Please enter your first name.",
+      lastName: "Please enter your last name.",
+      email: "Please enter a valid email address.",
       company: "Please enter your company name.",
       projectType: "Please select a project type.",
       engagement: "Please select an engagement preference.",
+      subject: "Please enter a subject.",
       message: "Please describe what you need.",
       privacy: "Please accept the privacy notice.",
     },
@@ -312,7 +334,6 @@ export const en = {
   footer: {
     description:
       "Nedora designs and delivers enterprise-grade applications and integrations for businesses that need software built with intent.",
-    email: "hello@nedora.com",
     location: "Bucharest, Romania",
     privacy: "Privacy",
     terms: "Terms",
@@ -328,7 +349,41 @@ export const en = {
   privacy: {
     title: "Privacy policy",
     intro:
-      "We process contact form data only to respond to your inquiry. We do not sell personal data. For questions, contact hello@nedora.com.",
+      "This policy explains how Nedora collects, uses, and protects personal data when you submit our contact form. We do not sell personal data.",
+    sections: [
+      {
+        title: "Data controller",
+        body: "The data controller responsible for your personal data is Nedora, based in Bucharest, Romania. You can reach us through the contact form on our website with any questions regarding this policy or your personal data.",
+      },
+      {
+        title: "Data we collect",
+        body: "When you submit a form on our website, we collect the information you provide. For quote requests, this includes your full name, work email address, company name, project details, and timeline preference. For general contact messages, we collect your first name, last name, email address, subject, and message. Personal identifiers (name and email) are encrypted before storage. We do not collect any other personal data through this website unless you include it voluntarily in your message.",
+      },
+      {
+        title: "Purpose and legal basis",
+        body: "We process your data to respond to your inquiry and follow up on potential business discussions. The legal basis for this processing is our legitimate interest in handling business communications and evaluating prospective engagements, pursuant to Article 6(1)(f) of the GDPR.",
+      },
+      {
+        title: "Data retention",
+        body: "We retain your contact form data for up to 12 months after our last communication with you, unless a longer period is required by law or an ongoing business relationship. After this period, your data is permanently deleted.",
+      },
+      {
+        title: "Third-party processors",
+        body: "We use the following service providers who process data on our behalf: Supabase, which stores contact form submissions securely in the cloud (with personal identifiers encrypted), Resend, which delivers email notifications to our team when a form is submitted, and Vercel, which hosts this website. These providers act as data processors under the GDPR and are bound by appropriate data processing agreements.",
+      },
+      {
+        title: "Your rights",
+        body: "Under the GDPR, you have the right to access your personal data, rectify inaccurate data, request erasure, restrict processing, data portability, and object to processing based on legitimate interest. To exercise any of these rights, submit a message through our contact form with the subject \"Privacy request\". We will respond within one month.",
+      },
+      {
+        title: "Right to lodge a complaint",
+        body: "If you believe we have not handled your personal data in accordance with the GDPR, you have the right to lodge a complaint with Romania's data protection authority, the ANSPDCP (Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal), at dataprotection.ro.",
+      },
+      {
+        title: "Effective date",
+        body: "This privacy policy is effective from June 2026.",
+      },
+    ],
   },
 };
 

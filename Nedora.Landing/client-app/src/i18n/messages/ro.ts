@@ -32,7 +32,7 @@ export const ro: Messages = {
     scrollDownLabel: "Derulează la secțiunea următoare",
   },
   facts: {
-    title: "Cifre și date",
+    title: "Cifre și fapte",
     items: [
       {
         value: "10",
@@ -52,7 +52,7 @@ export const ro: Messages = {
     ],
   },
   coreValues: {
-    title: "La ce ne poți ține cont",
+    title: "Pe ce te poți baza",
     subtitle:
       "Software-ul enterprise eșuează cel mai des nu din cauza codului prost, ci din cauza așteptărilor nealiniate, a furnizorilor care dispar și a angajamentelor pe care nimeni nu le-a scris. Iată cele șase lucruri pe care le garantăm în fiecare colaborare — de la primul apel până la ani de rulare în producție.",
     items: [
@@ -120,7 +120,7 @@ export const ro: Messages = {
           "Milestone-uri agreate în scris. Demo-uri live la fiecare sprint. Schimbările de scope documentate și discutate — niciodată ascunse într-o factură surpriză. Știi mereu exact unde stau lucrurile.",
       },
       {
-        title: "Partener, nu predare și gata",
+        title: "Partener, nu simplu furnizor",
         description:
           "Lucrăm alături de stakeholderi și IT de la discovery până la lansare — și prin release-urile care urmează. Când cerințele se schimbă după go-live, vorbești cu inginerii care au construit sistemul.",
       },
@@ -249,7 +249,7 @@ export const ro: Messages = {
   },
   deal: {
     eyebrow: "Următorul pas",
-    title: "Hai să facem ceva grozav împreună.",
+    title: "Construim ceva excepțional împreună.",
     subtitle:
       "Fie că explorezi opțiunile sau știi deja ce ai nevoie, te ajutăm să transformi ideea într-un plan pe care stakeholderii îl pot aproba.",
     cardTitle: "Un drum clar către ofertă",
@@ -264,26 +264,45 @@ export const ro: Messages = {
     secondaryCta: "Vezi cum lucrăm",
   },
   contact: {
-    title: "Solicită o ofertă",
-    subtitle:
-      "Spune-ne despre proiectul tău. De obicei răspundem în două zile lucrătoare. Pentru solicitări simple, propunem adesea un apel de 30 de minute pentru a înțelege contextul înainte de o propunere scrisă.",
+    formTypes: {
+      quote: "Solicitare ofertă",
+      contact: "Contact",
+    },
+    forms: {
+      quote: {
+        title: "Solicită o ofertă",
+        subtitle:
+          "Spune-ne despre proiectul tău. De obicei răspundem în două zile lucrătoare. Pentru solicitări simple, propunem adesea un apel de 30 de minute pentru a înțelege contextul înainte de o propunere scrisă.",
+        submit: "Trimite solicitarea",
+      },
+      contact: {
+        title: "Ia legătura cu noi",
+        subtitle:
+          "Ai o întrebare sau vrei să ne contactezi? Trimite un mesaj și răspundem în două zile lucrătoare.",
+        submit: "Trimite mesajul",
+      },
+    },
     name: "Nume complet",
+    firstName: "Prenume",
+    lastName: "Nume",
     email: "Email de serviciu",
+    emailContact: "Email",
     company: "Companie",
     projectType: "Tip proiect",
     engagement: "Preferință colaborare",
     message: "De ce ai nevoie?",
+    messageContact: "Mesajul tău",
+    subject: "Subiect",
     timeline: "Termen",
     privacy:
       "Prin trimiterea acestui formular ești de acord ca Nedora să prelucreze datele tale pentru a răspunde solicitării.",
     privacyLink: "Citește Politica de confidențialitate.",
-    submit: "Trimite solicitarea",
     submitting: "Se trimite…",
     successTitle: "Mulțumim",
     successMessage:
       "Am primit solicitarea ta și revenim în curând.",
     errorMessage:
-      "A apărut o eroare. Încearcă din nou sau scrie-ne direct pe email.",
+      "A apărut o eroare. Încearcă din nou.",
     projectTypes: {
       newApp: "Aplicație nouă",
       integration: "Integrare / modernizare",
@@ -293,7 +312,7 @@ export const ro: Messages = {
     engagementOptions: {
       fixed: "Proiect cu scop fix",
       time: "Colaborare pe bază de timp",
-      unsure: "Nu sunt sigur — consiliați-mă",
+      unsure: "Nu sunt sigur — sfătuiește-mă",
     },
     timelineOptions: {
       asap: "Gata să începem acum",
@@ -303,10 +322,13 @@ export const ro: Messages = {
     },
     validation: {
       name: "Introdu numele tău.",
-      email: "Introdu un email valid de serviciu.",
+      firstName: "Introdu prenumele.",
+      lastName: "Introdu numele de familie.",
+      email: "Introdu o adresă de email validă.",
       company: "Introdu numele companiei.",
       projectType: "Selectează tipul proiectului.",
       engagement: "Selectează preferința de colaborare.",
+      subject: "Introdu un subiect.",
       message: "Descrie ce ai nevoie.",
       privacy: "Acceptă notificarea de confidențialitate.",
     },
@@ -314,7 +336,6 @@ export const ro: Messages = {
   footer: {
     description:
       "Nedora proiectează și livrează aplicații și integrări enterprise pentru companiile care au nevoie de software construit cu intenție.",
-    email: "hello@nedora.com",
     location: "București, România",
     privacy: "Confidențialitate",
     terms: "Termeni",
@@ -330,6 +351,40 @@ export const ro: Messages = {
   privacy: {
     title: "Politica de confidențialitate",
     intro:
-      "Prelucrăm datele din formularul de contact doar pentru a răspunde solicitării tale. Nu vindem date personale. Pentru întrebări: hello@nedora.com.",
+      "Această politică explică modul în care Nedora colectează, utilizează și protejează datele personale atunci când trimiți formularul nostru de contact. Nu vindem date personale.",
+    sections: [
+      {
+        title: "Operatorul de date",
+        body: "Operatorul responsabil pentru datele tale personale este Nedora, cu sediul în București, România. Ne poți contacta prin formularul de contact de pe site pentru orice întrebări legate de această politică sau de datele tale personale.",
+      },
+      {
+        title: "Date pe care le colectăm",
+        body: "Când trimiți un formular pe site-ul nostru, colectăm informațiile pe care le furnizezi. Pentru solicitări de ofertă, acestea includ numele complet, emailul de serviciu, numele companiei, detaliile proiectului și preferința de termen. Pentru mesaje generale de contact, colectăm prenumele, numele, adresa de email, subiectul și mesajul. Identificatorii personali (nume și email) sunt criptați înainte de stocare. Nu colectăm alte date personale prin acest site, decât dacă le incluzi voluntar în mesajul tău.",
+      },
+      {
+        title: "Scopul și temeiul legal",
+        body: "Prelucrăm datele pentru a răspunde solicitării tale și pentru a urmări eventuale discuții comerciale. Temeiul legal al prelucrării este interesul nostru legitim de a gestiona comunicările de business și de a evalua colaborări potențiale, conform Art. 6 alin. (1) lit. f) din GDPR.",
+      },
+      {
+        title: "Păstrarea datelor",
+        body: "Păstrăm datele din formularul de contact până la 12 luni de la ultima comunicare cu tine, exceptând cazurile în care o perioadă mai lungă este cerută de lege sau de relația comercială în curs. După această perioadă, datele sunt șterse definitiv.",
+      },
+      {
+        title: "Procesatori terți",
+        body: "Folosim următorii furnizori de servicii care prelucrează date în numele nostru: Supabase, care stochează în siguranță în cloud trimiterile din formulare (cu identificatorii personali criptați), Resend, care livrează notificări prin email echipei noastre la trimiterea unui formular, și Vercel, care găzduiește acest site. Acești furnizori acționează ca procesatori de date conform GDPR și sunt obligați prin acorduri corespunzătoare de prelucrare a datelor.",
+      },
+      {
+        title: "Drepturile tale",
+        body: "Conform GDPR, ai dreptul de acces la datele personale, de rectificare a datelor inexacte, de ștergere, de restricționare a prelucrării, de portabilitate a datelor și de opoziție față de prelucrarea bazată pe interes legitim. Pentru a exercita oricare dintre aceste drepturi, trimite un mesaj prin formularul de contact cu subiectul „Solicitare confidențialitate”. Vom răspunde în termen de o lună.",
+      },
+      {
+        title: "Dreptul de a depune plângere",
+        body: "Dacă consideri că nu am gestionat datele tale personale în conformitate cu GDPR, ai dreptul de a depune o plângere la autoritatea de protecție a datelor din România, ANSPDCP (Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal), la dataprotection.ro.",
+      },
+      {
+        title: "Data intrării în vigoare",
+        body: "Această politică de confidențialitate intră în vigoare din iunie 2026.",
+      },
+    ],
   },
 };
