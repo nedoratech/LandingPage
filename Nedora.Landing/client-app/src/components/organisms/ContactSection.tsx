@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, type FormEvent, type ReactNode } from "react";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "@/components/atoms/Button";
+import { Icon } from "@/components/atoms/Icon";
 import { Section } from "@/components/atoms/Section";
 import { Textarea } from "@/components/atoms/Textarea";
 import { Heading } from "@/components/atoms/Heading";
@@ -104,21 +106,16 @@ export function ContactSection() {
       <Section id={SECTION_IDS.contact} className="!bg-white py-8 sm:py-10" revealOnView={false}>
         <ContactCard>
           <div className="mx-auto max-w-xl text-center">
+            <div
+              className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100"
+              aria-hidden
+            >
+              <Icon icon={faCheck} className="h-8 w-8 text-green-600" />
+            </div>
             <Heading level={2}>{t.contact.successTitle}</Heading>
             <Text className="mt-4" muted>
               {t.contact.successMessage}
             </Text>
-            <Button
-              type="button"
-              variant="secondary"
-              className="mt-8"
-              onClick={() => {
-                setErrors({});
-                setState("idle");
-              }}
-            >
-              {t.contact.submitAnother}
-            </Button>
           </div>
         </ContactCard>
       </Section>
