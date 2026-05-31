@@ -280,6 +280,7 @@ export const en = {
     successTitle: "Thank you",
     successMessage:
       "We've received your request and will be in touch shortly.",
+    submitAnother: "Send another request",
     errorMessage:
       "Something went wrong. Please try again or email us directly.",
     projectTypes: {

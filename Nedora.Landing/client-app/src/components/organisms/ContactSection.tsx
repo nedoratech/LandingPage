@@ -87,11 +87,13 @@ export function ContactSection() {
           locale,
         }),
       });
+
       if (!response.ok) {
-        throw new Error("Request failed");
+        setState("error");
+        return;
       }
+
       setState("success");
-      event.currentTarget.reset();
     } catch {
       setState("error");
     }
@@ -110,9 +112,12 @@ export function ContactSection() {
               type="button"
               variant="secondary"
               className="mt-8"
-              onClick={() => setState("idle")}
+              onClick={() => {
+                setErrors({});
+                setState("idle");
+              }}
             >
-              {t.contact.submit}
+              {t.contact.submitAnother}
             </Button>
           </div>
         </ContactCard>

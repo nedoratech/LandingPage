@@ -282,6 +282,7 @@ export const ro: Messages = {
     successTitle: "Mulțumim",
     successMessage:
       "Am primit solicitarea ta și revenim în curând.",
+    submitAnother: "Trimite o altă solicitare",
     errorMessage:
       "A apărut o eroare. Încearcă din nou sau scrie-ne direct pe email.",
     projectTypes: {
