@@ -102,6 +102,14 @@ export function SiteFooter() {
               <ul className="flex flex-col gap-3">
                 <li>
                   <FooterLink
+                    href={contactFormHash("quote")}
+                    className="text-base text-white"
+                  >
+                    {t.nav.cta}
+                  </FooterLink>
+                </li>
+                <li>
+                  <FooterLink
                     href={contactFormHash("contact")}
                     className="text-base text-white"
                   >

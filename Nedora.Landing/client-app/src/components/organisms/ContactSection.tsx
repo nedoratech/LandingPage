@@ -24,9 +24,6 @@ import { useLocale } from "@/providers/LocaleProvider";
 type FormState = "idle" | "submitting" | "success" | "error";
 type FieldErrors = Partial<Record<string, string>>;
 
-const formTypeSelectClass =
-  "w-full appearance-none rounded-xl border-0 bg-white px-4 py-3.5 text-base text-black shadow-none focus:outline-none focus:ring-2 focus:ring-primary-blue/30 sm:max-w-xs";
-
 const textareaClass =
   "min-h-[8.5rem] resize-y border-0 bg-white px-4 py-3.5 text-base shadow-none rounded-xl focus:border-transparent focus:ring-2 focus:ring-primary-blue/30";
 
@@ -54,21 +51,18 @@ function FormTypeSelector({
   contactLabel: string;
 }) {
   return (
-    <div>
-      <label htmlFor="formType" className="sr-only">
-        {label}
-      </label>
-      <select
-        id="formType"
-        name="formType"
-        value={value}
-        onChange={(event) => onChange(event.target.value as ContactFormType)}
-        className={formTypeSelectClass}
-      >
-        <option value="quote">{quoteLabel}</option>
-        <option value="contact">{contactLabel}</option>
-      </select>
-    </div>
+    <ContactSelectField
+      id="formType"
+      name="formType"
+      hidePlaceholder
+      aria-label={label}
+      value={value}
+      onChange={(event) => onChange(event.target.value as ContactFormType)}
+      className="sm:max-w-xs"
+    >
+      <option value="quote">{quoteLabel}</option>
+      <option value="contact">{contactLabel}</option>
+    </ContactSelectField>
   );
 }
 

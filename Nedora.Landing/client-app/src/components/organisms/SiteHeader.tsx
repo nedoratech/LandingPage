@@ -19,7 +19,6 @@ const navItems = [
   { href: `#${SECTION_IDS.why}`, labelKey: "why" as const },
   { href: `#${SECTION_IDS.process}`, labelKey: "process" as const },
   { href: `#${SECTION_IDS.engagement}`, labelKey: "engagement" as const },
-  { href: contactFormHash("contact"), labelKey: "contact" as const },
 ] as const;
 
 function MenuIcon() {

@@ -579,7 +579,7 @@ a.text-link:focus-visible::after {
   cursor: default;
 }
 
-.landing-card :is(input:not([type="checkbox"]):not([type="radio"]), textarea, select) {
+.landing-card :is(input:not([type="checkbox"]):not([type="radio"]), textarea) {
   cursor: text;
 }
 
@@ -589,7 +589,8 @@ a.text-link:focus-visible::after {
   [role="button"],
   label[for],
   input[type="checkbox"],
-  input[type="radio"]
+  input[type="radio"],
+  select
 ) {
   cursor: pointer;
 }
