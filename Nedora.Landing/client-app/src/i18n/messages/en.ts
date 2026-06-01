@@ -370,7 +370,7 @@ export const en = {
       },
       {
         title: "Third-party processors",
-        body: "We use the following service providers who process data on our behalf: Supabase, which stores contact form submissions securely in the cloud (with personal identifiers encrypted), Resend, which delivers email notifications to our team when a form is submitted, and Vercel, which hosts this website. These providers act as data processors under the GDPR and are bound by appropriate data processing agreements.",
+        body: "We use the following service providers who process data on our behalf: Supabase, which stores contact form submissions securely in the cloud (with personal identifiers encrypted), and Vercel, which hosts this website. These providers act as data processors under the GDPR and are bound by appropriate data processing agreements.",
       },
       {
         title: "Your rights",

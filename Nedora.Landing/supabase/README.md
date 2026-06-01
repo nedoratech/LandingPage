@@ -1,15 +1,13 @@
 # Supabase — Nedora Landing
 
-Database migrations and Edge Functions for the landing site, deployed automatically via **Supabase GitHub integration**.
+Database migrations for the landing site, deployed automatically via **Supabase GitHub integration**.
 
 ## Layout
 
 ```text
 supabase/
-  config.toml          # Project config (migrations + Edge Functions)
+  config.toml          # Project config (migrations enabled)
   migrations/          # Timestamped SQL — applied in order on deploy
-  functions/
-    notify-submission/ # Email notification on new form submission
   README.md
 ```
 
@@ -32,7 +30,6 @@ Install the [Supabase CLI](https://supabase.com/docs/guides/cli), then from `Ned
 supabase link --project-ref <your-project-ref>
 supabase db push          # apply pending migrations to remote
 supabase db reset         # reset local DB and replay all migrations
-supabase functions deploy notify-submission
 ```
 
 ## Schema
@@ -57,76 +54,30 @@ The Next.js `/api/contact` route calls the `insert_contact_submission` RPC using
 | `quote` | Encrypted name + email; company, project type, engagement, timeline, message |
 | `contact` | Encrypted first name, last name, email; subject, message |
 
-## Email notifications (Edge Function)
+## Viewing and updating encrypted submissions
 
-When a row is inserted into `contact_submissions`, a **Database Webhook** invokes the `notify-submission` Edge Function, which:
-
-1. Validates the webhook secret
-2. Loads the encryption key for the submission
-3. Decrypts PII fields
-4. Sends an email to your team via **Resend**
-
-### 1. Resend setup
-
-1. Create an account at [resend.com](https://resend.com)
-2. Add and verify your sending domain (e.g. `nedora.com`)
-3. Create an API key
-
-### 2. Edge Function secrets
-
-Supabase Dashboard → **Edge Functions** → **Secrets** (or via CLI):
+PII cannot be read directly in the Supabase Table Editor. Use the admin CLI in the Next.js app (requires `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` in `client-app/.env.local`):
 
 ```bash
-supabase secrets set \
-  RESEND_API_KEY=re_... \
-  RESEND_FROM_EMAIL="Nedora Forms <notifications@nedora.com>" \
-  CONTACT_NOTIFICATION_EMAIL=team@nedora.com \
-  WEBHOOK_SECRET=<random-secret> \
-  SUPABASE_SERVICE_ROLE_KEY=<service-role-key>
+cd Nedora.Landing/client-app
+
+# Export all submissions (decrypted) to JSON or CSV
+yarn contacts:export
+yarn contacts:export --format csv --out submissions.csv
+
+# View one submission
+yarn contacts:show <submission-uuid>
+
+# Update workflow status only
+yarn contacts:update-status <submission-uuid> reviewed
+
+# Update fields (re-encrypts PII when email/name fields change)
+yarn contacts:apply <submission-uuid> patch.json
 ```
 
-`SUPABASE_URL` is available automatically in Edge Functions. `SUPABASE_SERVICE_ROLE_KEY` must be set explicitly for decrypting submissions.
+See [`client-app/scripts/README.md`](../client-app/scripts/README.md) for patch file format and examples.
 
-Deploy the function:
-
-```bash
-supabase functions deploy notify-submission
-```
-
-### 3. Database Webhook
-
-Supabase Dashboard → **Database** → **Webhooks** → **Create a new hook**:
-
-| Setting | Value |
-|---------|-------|
-| Name | `notify-submission` |
-| Table | `contact_submissions` |
-| Events | `INSERT` |
-| Type | Supabase Edge Function |
-| Edge Function | `notify-submission` |
-
-Supabase invokes the function with an `Authorization: Bearer <service-role-key>` header automatically. You can also call the function via HTTP with an `x-webhook-secret` header matching `WEBHOOK_SECRET`.
-
-If configuring manually via HTTP instead:
-
-- **URL:** `https://<project-ref>.supabase.co/functions/v1/notify-submission`
-- **Headers:** `x-webhook-secret: <WEBHOOK_SECRET>` (must match the secret above)
-
-The function rejects requests without a valid `x-webhook-secret` header.
-
-### Webhook payload format
-
-Supabase Database Webhooks send:
-
-```json
-{
-  "type": "INSERT",
-  "table": "contact_submissions",
-  "record": { ... }
-}
-```
-
-The Edge Function ignores events for other tables or non-INSERT operations.
+If you previously configured a **Database Webhook** for `notify-submission`, delete it in **Database → Webhooks** (the Edge Function has been removed).
 
 ## Next.js integration
 

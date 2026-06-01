@@ -19,6 +19,3 @@ enabled = true
 
 [db.seed]
 enabled = false
-
-[functions.notify-submission]
-verify_jwt = false

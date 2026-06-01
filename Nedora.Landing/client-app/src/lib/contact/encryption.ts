@@ -1,4 +1,4 @@
-import { createCipheriv, randomBytes } from "crypto";
+import { createCipheriv, createDecipheriv, randomBytes } from "crypto";
 
 export type EncryptedPayload = {
   iv: string;
@@ -27,4 +27,17 @@ export function encrypt(plaintext: string, keyBase64: string): string {
   };
 
   return JSON.stringify(payload);
+}
+
+export function decrypt(encryptedJson: string, keyBase64: string): string {
+  const payload = JSON.parse(encryptedJson) as EncryptedPayload;
+  const key = Buffer.from(keyBase64, "base64");
+  const iv = Buffer.from(payload.iv, "base64");
+  const ciphertext = Buffer.from(payload.ciphertext, "base64");
+  const tag = Buffer.from(payload.tag, "base64");
+  const decipher = createDecipheriv("aes-256-gcm", key, iv);
+  decipher.setAuthTag(tag);
+  return Buffer.concat([decipher.update(ciphertext), decipher.final()]).toString(
+    "utf8",
+  );
 }

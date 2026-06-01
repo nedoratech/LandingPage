@@ -372,7 +372,7 @@ export const ro: Messages = {
       },
       {
         title: "Procesatori terți",
-        body: "Folosim următorii furnizori de servicii care prelucrează date în numele nostru: Supabase, care stochează în siguranță în cloud trimiterile din formulare (cu identificatorii personali criptați), Resend, care livrează notificări prin email echipei noastre la trimiterea unui formular, și Vercel, care găzduiește acest site. Acești furnizori acționează ca procesatori de date conform GDPR și sunt obligați prin acorduri corespunzătoare de prelucrare a datelor.",
+        body: "Folosim următorii furnizori de servicii care prelucrează date în numele nostru: Supabase, care stochează în siguranță în cloud trimiterile din formulare (cu identificatorii personali criptați), și Vercel, care găzduiește acest site. Acești furnizori acționează ca procesatori de date conform GDPR și sunt obligați prin acorduri corespunzătoare de prelucrare a datelor.",
       },
       {
         title: "Drepturile tale",
